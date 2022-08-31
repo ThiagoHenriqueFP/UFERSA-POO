@@ -1,17 +1,42 @@
 package edu.ufersa.pizzaria;
-class Cliente{
+class Client{
 	private String name;
-	private Address address = new Address();
+	private int cpf;
+	Address address = new Address(); // only default
+	
+	// Constructors - Default 
+	public Client() {
+		setName("");
+	}
+	
+	// Constructors - With name
+	public Client(String name) {
+		setName(name);
+	}
 	
 	public String getName() {
 		return name;
 	}
+	
+	public int getCPF() {
+		return cpf;
+	}
+	
+	public void setCPF(int cpf) {
+		if (cpf == 0) {
+			this.cpf = 00000000000;
+		}else {
+			this.cpf = cpf;				
+		}
+	}
+	
 	public void setName(String name) {
-		if(name != null)
+		if(name != null) {
 			if (name!="")
 				this.name = name;
-		
-		this.name = "Franchesco";
+		} else {			
+			this.name = "Franchesco";
+		}
 	}
 	
 	
