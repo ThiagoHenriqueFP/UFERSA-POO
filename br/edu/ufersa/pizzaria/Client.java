@@ -31,8 +31,7 @@ class Client{
 	}
 	
 	public void setName(String name) {
-		if(name != null) {
-			if (name!="")
+		if(name != null && name != "") {
 				this.name = name;
 		} else {			
 			this.name = "Franchesco";
