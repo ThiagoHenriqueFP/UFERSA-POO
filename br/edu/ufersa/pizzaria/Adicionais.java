@@ -1,6 +1,6 @@
 package edu.ufersa.pizzaria;
 
-class Adicionais {
+public class Adicionais {
     private String name;
     private double value;
 
@@ -33,5 +33,7 @@ class Adicionais {
         setName(name);
         setValor(value);
     }
+
+
 
 }
