@@ -1,16 +1,18 @@
+package edu.ufersa.pizzaria;
+
 class Storage{
     //Atributos
     private String item;
     private int quantity;
 
-    //Método Construtor
+    //Metodo Construtor
     public Storage(){}
     public Storage(String item, int quantity){
         this.setItem(item);
         this.setQuantity(quantity);
     }
 
-    //Métodos
+    //Metodos
     public void editarItemdoEstoque(String it, int qtd){
         this.setItem(it);
         this.setQuantity(qtd);
@@ -20,7 +22,7 @@ class Storage{
         this.setQuantity(0);
     }
 
-    //Métodos Get e Set
+    //Metodos Get e Set
     public void setItem(String item) {
         if(!item.isEmpty()){
             this.item = item;
