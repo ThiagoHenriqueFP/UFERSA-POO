@@ -26,7 +26,8 @@ class Address {
 		return street;
 	}
 	public void setStreet(String street) {
-		if (street != null && street != "") {
+		if (street != null) {
+			if (street != "")
 				this.street = street;
 		} else {
 			this.street = "some street";
@@ -36,7 +37,8 @@ class Address {
 		return neighborhood;
 	}
 	public void setNeighborhood(String neighborhood) {
-		if (neighborhood != null && neighborhood != "") {
+		if (neighborhood != null) {
+			if (neighborhood != "")
 				this.neighborhood = neighborhood;
 		} else {			
 			this.neighborhood = "some neighborhood";
@@ -46,7 +48,8 @@ class Address {
 		return number;
 	}
 	public void setNumber(String number) {
-		if (number != null && number != "") {
+		if (number != null) {
+			if (number != "")
 				this.number = number;
 		} else {
 			this.number = "some number";
@@ -56,7 +59,8 @@ class Address {
 		return references;
 	}
 	public void setReferences(String references) {
-		if (references != null && references != "" ) {
+		if (references != null) {
+			if (references != "")
 				this.references = references;
 		} else {
 			this.references = "some references";
