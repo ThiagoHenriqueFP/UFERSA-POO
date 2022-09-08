@@ -19,14 +19,14 @@ class Orders {
     //Métodos Getter e Setter
     public void setTamanho(String tamanho) {
         switch(tamanho){
-            case P:
-            case p: this.tamanho = tamanho;
+            case 'P':
+            case 'p': this.tamanho = tamanho;
                     break;
-            case M:
-            case m: this.tamanho = tamaho;
+            case 'M':
+            case 'm': this.tamanho = tamanho;
                     break;
-            case G:
-            case g: this.tamanho = tamanho;
+            case 'G':
+            case 'g': this.tamanho = tamanho;
                     break;
             default: System.out.println("Tamanho inválido");
                     break;
