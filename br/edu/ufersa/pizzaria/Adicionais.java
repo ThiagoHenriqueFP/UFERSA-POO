@@ -4,7 +4,7 @@ public class Adicionais {
     private String name;
     private double value;
 
-    void cadastrarAdicional(){
+    public Adicionais(){
         this.name = "Franchesco";
         this.value = 1.00000000;
     }
@@ -29,7 +29,7 @@ public class Adicionais {
 
     double getValue(){return this.value;}
 
-    void cadastrarAdicional(String name, double value){
+    public Adicionais(String name, double value){
         setName(name);
         setValor(value);
     }
