@@ -1,7 +1,7 @@
 package edu.ufersa.pizzaria;
 class Client{
 	private String name;
-	private int cpf;
+	private String cpf;
 	Address address = new Address(); // only default
 	
 	// Constructors - Default 
@@ -18,13 +18,13 @@ class Client{
 		return name;
 	}
 	
-	public int getCPF() {
+	public String getCPF() {
 		return cpf;
 	}
 	
-	public void setCPF(int cpf) {
-		if (cpf == 0) {
-			this.cpf = 00000000000;
+	public void setCPF(String cpf) {
+		if (cpf.isEmpty() || cpf == null) {
+			this.cpf = "000.000.000-00";
 		}else {
 			this.cpf = cpf;				
 		}
