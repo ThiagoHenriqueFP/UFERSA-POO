@@ -10,7 +10,7 @@ public class Adicionais {
     }
 
     void setName(String name){
-        if(!name.isEmpty() && name != ""){ //Se nome está vazio e diferente de "" será adotado nome escrito
+        if(!name.isEmpty() && name != null){ //Se nome está vazio e diferente de "" será adotado nome escrito
             this.name = name;
         }else{
             System.out.println("Nome para o ADICIONAL é invalido...");
