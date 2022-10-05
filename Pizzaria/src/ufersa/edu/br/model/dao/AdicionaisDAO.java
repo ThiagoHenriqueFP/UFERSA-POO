@@ -1,5 +1,5 @@
 package ufersa.edu.br.model.dao;
-import br.edu.ufersa.academia.model.entities.Adicionais;
+import br.edu.ufersa.pizzaria.model.entities.Adicionais;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
