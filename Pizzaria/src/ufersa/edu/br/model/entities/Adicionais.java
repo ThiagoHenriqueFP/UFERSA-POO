@@ -19,7 +19,7 @@ public class Adicionais {
 
     String getName(){return this.name;}
 
-    void setValor(double value){
+    void setValue(double value){
         if(value > 0 && value != 0){ //Se valor maior que 0 e diferente de 0 será adotado valor digitado
             this.value = value;
         }else{
@@ -31,7 +31,7 @@ public class Adicionais {
 
     void cadastrarAdicional(String name, double value){
         setName(name);
-        setValor(value);
+        setValue(value);
     }
 
 
