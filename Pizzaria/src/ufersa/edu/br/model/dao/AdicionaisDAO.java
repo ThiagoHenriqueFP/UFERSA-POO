@@ -1,42 +1,49 @@
 package ufersa.edu.br.model.dao;
-import Pizzaria.src.ufersa.edu.br.model.entities.Adicionais;
+import ufersa.edu.br.model.entities.Adicionais;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AdicionaisDAO <Adicionais>{
 	
-	public void insertAdicional(Adicionais adicional) {
+	public boolean insertAdicional(Adicionais adicional) {
 		String sql = "INSERT INTO tb_pizzaria (name, value) VALUES (?,?); ";
 		
 		try {
 		PreparedStatement pst = getConnection().prepareStatement(sql);
 		pst.setString(1, adicional.getName());
 		pst.setDouble(2, adicional.getValue());
+		return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
-	public void deleteAdicional(Adicionais adicional) {
+	public boolean deleteAdicional(Adicionais adicional) {
 		String sql = "DELETE FROM tb_pizzaria WHERE name=? ";
 		
 		try {
 		PreparedStatement pst = getConnection().prepareStatement(sql);
 		pst.setString(1, adicional.getName());
+		return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
-	public void updateAdicional(Adicionais adicional) {
+	public boolean updateAdicional(Adicionais adicional) {
 		String sql = "UPDATE tb_pizzaria SET name=?, value=? WHERE name=?;";
 		
 		try {
+			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, adicional.getName());
 			pst.setDouble(2, adicional.getValue());
+			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
