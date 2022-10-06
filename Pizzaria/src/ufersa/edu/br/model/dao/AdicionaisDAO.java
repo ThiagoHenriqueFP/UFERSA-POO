@@ -48,7 +48,7 @@ public class AdicionaisDAO <Adicionais>{
 	}
 	
 	public Adicionais findAdicional(Adicionais adicional) {
-		String pst = "SELECT * FROM tb_pizzaria WHERE name=? ;";
+		String sql = "SELECT * FROM tb_pizzaria WHERE name=? ;";
 		
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
