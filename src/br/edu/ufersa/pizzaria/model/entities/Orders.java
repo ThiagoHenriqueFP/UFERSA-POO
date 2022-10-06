@@ -1,100 +1,72 @@
 package br.edu.ufersa.pizzaria.model.entities;
 
-class Orders {
+public class Orders {
     //Atributos
-    Client cliente;
-    PizzasType pizza;
-    Additionals adicional;
-    String tamanho;
-    String estado;
-
-    //Método Construtor
-    public Orders(){}
-    public Orders(Client cliente, PizzasType pizza, Additionals adicional, String tam, String estado){
-        this.setCliente(cliente);
-        this.setPizza(pizza);
-        this.setAdicional(adicional);
-        this.setTamanho(tam);
-        this.setEstado(estado);
-    }
+    private Client client;
+    private PizzasType pizza;
+    private Additionals additional;
+    private String size;
+    private String state;
+    private int id;
 
     //Métodos Getter e Setter
-    public void setTamanho(String tamanho) {
-        switch(tamanho){
+    public void setSize(String size) {
+        switch(size){
             case "P":
-            case "p": this.tamanho = tamanho;
+            case "p": this.size = size;
                     break;
             case "M":
-            case "m": this.tamanho = tamanho;
+            case "m": this.size = size;
                     break;
             case "G":
-            case "g": this.tamanho = tamanho;
+            case "g": this.size = size;
                     break;
-            default: System.out.println("Tamanho inválido");
+            default: System.out.println("size inválido");
                     break;
         }    
     }
-    public void setEstado(String estado) {
-        switch(estado){
-            case "Preparando": this.estado = estado;
+    public void setState(String state) {
+        switch(state){
+            case "Preparando": this.state = state;
                             break;
-            case "Pronto": this.estado = estado;
+            case "Pronto": this.state = state;
                             break;
-            case "Saiu para entrega": this.estado = estado;
+            case "Saiu para entrega": this.state = state;
                             break;
-            case "Entregue": this.estado = estado;
+            case "Entregue": this.state = state;
                             break;
-            case "Cancelado": this.estado = estado;
+            case "Cancelado": this.state = state;
                             break;
-            default: System.out.println("Estado inválido");
+            default: System.out.println("state inválido");
                             break;
         }
     }
-    public void setCliente(Client cliente) {
-        this.cliente = cliente;
+    public void setClient(Client client) {
+        this.client = client;
     }
     public void setPizza(PizzasType pizza) {
         this.pizza = pizza;
     }
-    public void setAdicional(Additionals adicional) {
-        this.adicional = adicional;
+    public void setAdditional(Additionals additional) {
+        this.additional = additional;
     }
 
-    public String getTamanho() {
-        return tamanho;
+    public String getSize() {
+        return size;
     }
-    public String getEstado() {
-        return estado;
+    public String getState() {
+        return state;
     }
     public PizzasType getPizza() {
         return pizza;
     }
-    public Additionals getAdicional() {
-        return adicional;
+    public Additionals getAdditional() {
+        return additional;
     }
-    public Client getCliente() {
-        return cliente;
+    public Client getClient() {
+        return client;
     }
-
-    //Métodos
-    public void cadastrarPedido(Client cliente, PizzasType pizza, Additionals adicional, String tam, String estado){
-        this.setCliente(cliente);
-        this.setPizza(pizza);
-        this.setAdicional(adicional);
-        this.setTamanho(tam);
-        this.setEstado(estado);
-    }
-    public void editarPedido(PizzasType pizza, Additionals adicional, String tam, String estado){
-        this.setPizza(pizza);
-        this.setAdicional(adicional);
-        this.setTamanho(tam);
-        this.setEstado(estado);
-    }
-    public void cancelarPedido(Client cliente, PizzasType pizza, Additionals adicional, String tam, String estado){
-        this.setCliente(null);
-        this.setPizza(null);
-        this.setAdicional(null);
-        this.setTamanho(null);
-        this.setEstado("Cancelado");
+    public int getId() {
+    	return id;
     }
 }

@@ -1,26 +1,9 @@
 package br.edu.ufersa.pizzaria.model.entities;
 
-class Storage{
+public class Storage{
     //Atributos
-    private String item;
+    private String item; //CHAVE
     private int quantity;
-
-    //Metodo Construtor
-    public Storage(){}
-    public Storage(String item, int quantity){
-        this.setItem(item);
-        this.setQuantity(quantity);
-    }
-
-    //Metodos
-    public void editarItemdoEstoque(String it, int qtd){
-        this.setItem(it);
-        this.setQuantity(qtd);
-    }
-    public void excluirItemdoEstoque(){
-        this.setItem(null);
-        this.setQuantity(0);
-    }
 
     //Metodos Get e Set
     public void setItem(String item) {
