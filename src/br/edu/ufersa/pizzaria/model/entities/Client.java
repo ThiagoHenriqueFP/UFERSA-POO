@@ -3,7 +3,7 @@ package br.edu.ufersa.pizzaria.model.entities;
 public class Client{
 	private String name;
 	private String cpf; //CHAVE
-	private Address address;
+	private String address;
 	
 	public String getName() {
 		return name;
@@ -30,7 +30,7 @@ public class Client{
 		}
 	}
 	
-	public void setAddress(Address address) {
+	public void setAddress(String address) {
 		if(address != null) {
 			this.address = address;
 		}
@@ -38,7 +38,7 @@ public class Client{
 			this.address = null;
 		}
 	}
-	public Address getAddress() {
+	public String getAddress() {
 		return address;
 	}
 	
