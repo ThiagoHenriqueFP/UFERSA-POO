@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.edu.ufersa.pizzaria.model.entities.Address;
 import br.edu.ufersa.pizzaria.model.entities.Storage;
 
 public class StorageDAO extends BaseDAO<Storage>{

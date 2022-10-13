@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import br.edu.ufersa.pizzaria.model.entities.Address;
 import br.edu.ufersa.pizzaria.model.entities.Client;
 
 public class ClientDAO extends BaseDAO<Client>{
@@ -14,7 +13,7 @@ public class ClientDAO extends BaseDAO<Client>{
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, client.getName());
-			pst.setObject(2, client.getAddress());
+			pst.setString(2, client.getAddress());
 			pst.setString(3, client.getCPF());
 			pst.execute();
 			return true;
@@ -44,7 +43,7 @@ public class ClientDAO extends BaseDAO<Client>{
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, client.getName());
-			pst.setObject(2, client.getAddress());
+			pst.setString(2, client.getAddress());
 			pst.setString(3, client.getCPF());
 			pst.executeUpdate();
 			return true;
@@ -64,7 +63,7 @@ public class ClientDAO extends BaseDAO<Client>{
 			if(rs.next()) {
 				Client cc = new Client();
 				cc.setName(rs.getString("name"));
-				cc.setAddress((Address) rs.getObject("address"));
+				cc.setAddress(rs.getString("address"));
 				cc.setCPF(cc.getCPF());
 				return cc;
 			}
@@ -101,7 +100,7 @@ public class ClientDAO extends BaseDAO<Client>{
 				break;
 				
 			case "address":
-				pst.setObject(1, c.getAddress());
+				pst.setString(1, c.getAddress());
 				break;
 			
 			default: 

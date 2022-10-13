@@ -7,7 +7,6 @@ import java.util.List;
 
 import br.edu.ufersa.pizzaria.model.dao.BaseInterDAO;
 import br.edu.ufersa.pizzaria.model.dao.ClientDAO;
-import br.edu.ufersa.pizzaria.model.entities.Address;
 import br.edu.ufersa.pizzaria.model.entities.Client;
 
 public class ClientService {
@@ -37,7 +36,7 @@ public class ClientService {
 			while(rs.next()) {
 				Client client = new Client();
 				client.setName(rs.getString("name"));
-				client.setAddress((Address)rs.getObject("address"));
+				client.setAddress(rs.getString("address"));
 				client.setCPF(rs.getString("cpf"));
 				
 				clients.add(client);
