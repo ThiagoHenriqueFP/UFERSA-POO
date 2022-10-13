@@ -1,29 +1,39 @@
-package br.edu.ufersa.pizzaria.model.entities;
+package ufersa.edu.br.model.entities;
 
 public class Additionals {
     private String name;
     private double value;
-    private int id;
 
-    public void setName(String name){
-        if(!name.isEmpty() && name != ""){ //Se nome está vazio e diferente de "" será adotado nome escrito
+    void Additionals(){
+        this.name = "Franchesco";
+        this.value = 1.00000000;
+    }
+
+    void setName(String name){
+        if(!name.isEmpty() && name != null){ //Se nome está vazio e diferente de "" será adotado nome escrito
             this.name = name;
         }else{
-            this.name = null;
+            System.out.println("Nome para o ADICIONAL é invalido...");
         }
     }
 
-    public String getName(){return name;}
+    String getName(){return this.name;}
 
-    public void setValue(double value){
+    void setValue(double value){
         if(value > 0 && value != 0){ //Se valor maior que 0 e diferente de 0 será adotado valor digitado
             this.value = value;
         }else{
-            this.value = 0;
+            System.out.println("Valor digitado para o ADICIONAL é invalido...");
         }
     }
 
-    public double getValue(){return value;}
-    public int getId() {return id;}
+    double getValue(){return this.value;}
+
+    void Additionals(String name, double value){
+        setName(name);
+        setValue(value);
+    }
+
+
 
 }
