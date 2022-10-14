@@ -12,7 +12,7 @@ public class BaseDAO<entity> implements BaseInterDAO<entity>{
 	synchronized public Connection getConnection() {
 		if(con == null) {
 			try {
-				con = DriverManager.getConnection("jdbc:mysql://localhost/pizzaria","root","policial12");
+				con = DriverManager.getConnection("jdbc:mysql://localhost/pizzaria","root","SENHA MUITO BOA");
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}
