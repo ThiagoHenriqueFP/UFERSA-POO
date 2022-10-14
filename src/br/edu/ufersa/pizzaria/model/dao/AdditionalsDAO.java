@@ -10,6 +10,7 @@ public class AdditionalsDAO extends BaseDAO<Additionals>{
 	
 	public boolean addAdditional(Additionals a) {
 		String sql = "INSERT INTO /*TABLE NAME HERE*/ (name,value) VALUES (?,?);";
+		
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, a.getName());

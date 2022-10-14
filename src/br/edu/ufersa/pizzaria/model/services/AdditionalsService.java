@@ -1,85 +1,69 @@
-package br.edu.ufersa.pizzaria.model.services;
+package ufersa.edu.br.model.dao;
 
+import ufersa.edu.br.model.entities.Adicionais;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import br.edu.ufersa.pizzaria.model.dao.AdditionalsDAO;
-import br.edu.ufersa.pizzaria.model.dao.BaseInterDAO;
-import br.edu.ufersa.pizzaria.model.entities.Additionals;
+public class AdditionalsService<additionals> {
 
-public class AdditionalsService {
-	
-	BaseInterDAO<Additionals> dao = new AdditionalsDAO();
-	
-	public boolean addAdditional(Additionals a) {
-		ResultSet rs = dao.findBySpecifiedField(a, "id");
+	public boolean insertAdicional(additionals adicional) {
+		String sql = "INSERT INTO tb_pizzaria (name, value) VALUES (?,?); ";
+
 		try {
-			if(rs == null || !rs.next()) {
-				if(dao.add(a) == true) {
-					return true;
-				}
-				else return false;
-			}
-			else return false;
-		}
-		catch(SQLException e) {
+			PreparedStatement pst = getConnection().prepareStatement(sql);
+			pst.setString(1, adicional.getName());
+			pst.setDouble(2, adicional.getValue());
+			return true;
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
-	
-	public List<Additionals> getAllAdditionals(){
-		List<Additionals> additis = new ArrayList<Additionals>();
-		ResultSet rs = dao.getAll();
+
+	public boolean deleteAdditionals(additionals adicional) {
+		String sql = "DELETE FROM tb_pizzaria WHERE name=? ";
+
 		try {
-			while(rs.next()) {
-				Additionals a = new Additionals();
-				a.setName(rs.getString("name"));
-				a.setValue(rs.getDouble("value"));
-				
-				additis.add(a);
-			}
-			return additis;
+			PreparedStatement pst = getConnection().prepareStatement(sql);
+			pst.setString(1, adicional.getName());
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
-		catch(SQLException e) {
+	}
+
+	public boolean updateAdditionals(additionals adicional) {
+		String sql = "UPDATE tb_pizzaria SET name=?, value=? WHERE name=?;";
+
+		try {
+			PreparedStatement pst = getConnection().prepareStatement(sql);
+			pst.setString(1, adicional.getName());
+			pst.setDouble(2, adicional.getValue());
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public Adicionais findAdicional(Adicionais adicional) {
+		String sql = "SELECT * FROM tb_pizzaria WHERE name=? ;";
+
+		try {
+			PreparedStatement pst = getConnection().prepareStatement(sql);
+			pst.setString(1, adicional.getName());
+			ResultSet rs = pst.executeQuery();
+			if (rs.next()) {
+				return adicional;
+			} else
+				return null;
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
-	public boolean editAdditional(Additionals a) {
-		ResultSet rs = dao.findBySpecifiedField(a, "id");
-		try {
-			if(rs!=null && rs.next()) {
-				if(dao.edit(a) == true) {
-					return true;
-				}
-				else return false;
-			}
-			else return false;
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
-	
-	public boolean deleteAdditional(Additionals a) {
-		ResultSet rs = dao.findBySpecifiedField(a, "id");
-		try {
-			if(rs!=null && rs.next()) {
-				if(dao.delete(a) == true) {
-					return true;
-				}
-				else return false;
-			}
-			else return false;
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
+
 }
