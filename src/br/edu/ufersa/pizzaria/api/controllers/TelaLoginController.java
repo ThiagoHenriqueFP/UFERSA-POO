@@ -2,6 +2,7 @@ package br.edu.ufersa.pizzaria.api.controllers;
 
 import javax.swing.JOptionPane;
 
+import br.edu.ufersa.pizzaria.view.Telas;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
@@ -17,8 +18,10 @@ public class TelaLoginController {
 	
 	
 	@FXML public void loginConnect(ActionEvent event) {
-		if(userLogin.getText() == "admin" && passwordLogin.getText() == "admin") {
+		if(userLogin.getText().equals("admin") && passwordLogin.getText().equals("admin")) {
 			JOptionPane.showMessageDialog(null, "Bem vindo ADMIN!");
+			Telas.telaHome();
+			
 		}else {
 			JOptionPane.showMessageDialog(null, "Acesso negado!!!");
 		}

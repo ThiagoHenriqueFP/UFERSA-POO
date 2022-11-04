@@ -38,7 +38,7 @@
                   <Font name="Calibri" size="24.0" />
                </font>
             </Button>
-            <PasswordField id="passwordLogin" layoutX="881.0" layoutY="555.0" prefHeight="42.0" prefWidth="369.0" style="-fx-background-color: #C7C7C7; -fx-background-radius: 50px;" />
+            <PasswordField id="passwordLogin" fx:id="passwordLogin" layoutX="881.0" layoutY="555.0" prefHeight="42.0" prefWidth="369.0" style="-fx-background-color: #C7C7C7; -fx-background-radius: 50px;" />
          </children></Pane>
    </children>
 </AnchorPane>
