@@ -55,6 +55,19 @@ public class Telas extends Application{
 		}
 	}
 
+	public static void telaClient() {
+		try {
+			Parent root = FXMLLoader.load(Telas.class.getClassLoader().getResource("br/edu/ufersa/pizzaria/view/resources/listClient.fxml"));
+			Scene cena = new Scene(root);
+			
+			stage.setTitle("Pizzaria-Home");
+			stage.setScene(cena);
+			stage.show();
+			
+		}catch(Exception a){
+			a.printStackTrace();
+		}
+	}
 
 
 }
