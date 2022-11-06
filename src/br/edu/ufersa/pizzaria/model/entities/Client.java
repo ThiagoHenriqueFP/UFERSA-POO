@@ -1,5 +1,7 @@
 package br.edu.ufersa.pizzaria.model.entities;
 
+import br.edu.ufersa.pizzaria.api.dto.ClientDTO;
+
 public class Client{
 	private String name;
 	private String cpf; //CHAVE
@@ -40,6 +42,14 @@ public class Client{
 	}
 	public String getAddress() {
 		return address;
+	}
+	
+	public Client convert(ClientDTO c) {
+		Client client = new Client();
+		client.setName(c.getName());
+		client.setCPF(c.getCpf());
+		client.setAddress(c.getAddress());
+		return client;
 	}
 	
 }
