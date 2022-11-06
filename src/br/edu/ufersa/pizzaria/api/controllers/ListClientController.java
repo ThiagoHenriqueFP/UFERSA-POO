@@ -1,6 +1,6 @@
 package br.edu.ufersa.pizzaria.api.controllers;
 
-import javax.swing.JOptionPane;
+
 
 import br.edu.ufersa.pizzaria.view.Telas;
 import javafx.event.ActionEvent;
@@ -24,7 +24,7 @@ public class ListClientController {
 	}
 	
 	@FXML public void btnClient(ActionEvent event) {
-		JOptionPane.showMessageDialog(null, "Em progresso!!!");
+		Telas.ClientSignUp();
 	}
 	
 	
