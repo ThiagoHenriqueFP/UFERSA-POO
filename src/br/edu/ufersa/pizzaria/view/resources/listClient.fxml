@@ -27,7 +27,7 @@
               <columns>
                 <TableColumn fx:id="nameColumn" minWidth="200.0" prefWidth="250.0" text="NOME" />
                 <TableColumn fx:id="cpfColumn" minWidth="200.0" prefWidth="250.0" text="CPF" />
-                  <TableColumn fx:id="adressColumn" minWidth="200.0" prefWidth="750.0" text="ENDEREÇO" />
+                  <TableColumn fx:id="addresColumn" minWidth="200.0" prefWidth="750.0" text="ENDEREÇO" />
               </columns>
             </TableView>
             <Button layoutX="1212.0" layoutY="942.0" mnemonicParsing="false" onAction="#btnClient" prefHeight="44.0" prefWidth="186.0" style="-fx-background-color: #6CAD36; -fx-border-radius: 25px;" text="Cadastrar Cliente" textFill="WHITE">

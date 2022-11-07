@@ -44,7 +44,7 @@ public class Client{
 		return address;
 	}
 	
-	public Client convert(ClientDTO c) {
+	public static Client convert(ClientDTO c) {
 		Client client = new Client();
 		client.setName(c.getName());
 		client.setCPF(c.getCpf());

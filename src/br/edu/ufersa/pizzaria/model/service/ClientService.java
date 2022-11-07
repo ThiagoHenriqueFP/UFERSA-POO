@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.edu.ufersa.pizzaria.api.dto.ClientDTO;
 import br.edu.ufersa.pizzaria.model.dao.BaseInterDAO;
 import br.edu.ufersa.pizzaria.model.dao.ClientDAO;
 import br.edu.ufersa.pizzaria.model.entities.Client;
@@ -12,11 +13,12 @@ import br.edu.ufersa.pizzaria.model.entities.Client;
 public class ClientService {
 	BaseInterDAO<Client> dao = new ClientDAO();
 	
-	public boolean addClient(Client c) {
-		ResultSet rs = dao.findBySpecifiedField(c, "id");
+	public boolean addClient(ClientDTO c) {
+		Client client = Client.convert(c);
+		ResultSet rs = dao.findBySpecifiedField(client, "id");
 		try {
 			if(rs == null || !rs.next()) {
-				if(dao.add(c) == true) {
+				if(dao.add(client) == true) {
 					return true;
 				}
 				else return false;
@@ -29,15 +31,15 @@ public class ClientService {
 		}
 	}
 	
-	public List<Client> getAllClients() {
-		List<Client> clients = new ArrayList<Client>();
+	public List<ClientDTO> getAllClients() {
+		List<ClientDTO> clients = new ArrayList<ClientDTO>();
 		ResultSet rs = dao.getAll();
 		try {
 			while(rs.next()) {
-				Client client = new Client();
+				ClientDTO client = new ClientDTO();
 				client.setName(rs.getString("name"));
 				client.setAddress(rs.getString("address"));
-				client.setCPF(rs.getString("cpf"));
+				client.setCpf(rs.getString("cpf"));
 				
 				clients.add(client);
 			}
