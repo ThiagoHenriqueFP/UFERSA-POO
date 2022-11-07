@@ -17,22 +17,21 @@ CREATE TABLE IF NOT EXISTS pizza (
     storage_id INT NOT NULL REFERENCES pizzaria.storage
 );
 
-CREATE TABLE additionals (
+CREATE TABLE IF NOT EXISTS additionals (
 	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(40) NOT NULL,
     value DOUBLE NOT NULL,
     storage_id INT NOT NULL REFERENCES pizzaria.storage
 );
 
-CREATE TABLE client (
+CREATE TABLE IF NOT EXISTS client (
 	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cpf VARCHAR(15) UNIQUE NOT NULL,
     name VARCHAR(40) NOT NULL,
     address VARCHAR(100)
 );
 
-ALTER TABLE client ADD cpf varchar (15);
-
-CREATE TABLE solicitation (
+CREATE TABLE IF NOT EXISTS solicitation (
 	id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     size CHAR DEFAULT 'G',
     state VARCHAR(15) DEFAULT 'fazendo',
@@ -69,4 +68,4 @@ INSERT INTO solicitation (size, value, created_at, pizza_id, client_id, addition
     1
 );
 
-SELECT * FROM solicitation;
+SELECT solicitation.* client.name FROM solicitation INNER JOIN client ON solicitation.client_id = client.client_id;
