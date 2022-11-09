@@ -43,8 +43,7 @@ public class Telas extends Application {
 
 	public static void telaHome() {
 		try {
-			Parent root = FXMLLoader.load(Telas.class.getClassLoader()
-					.getResource("br/edu/ufersa/pizzaria/view/resources/optionsSession.fxml"));
+			Parent root = FXMLLoader.load(Telas.class.getClassLoader().getResource("br/edu/ufersa/pizzaria/view/resources/optionsSession.fxml"));
 			Scene cena = new Scene(root);
 
 			stage.setTitle("Pizzaria-Home");
@@ -73,8 +72,7 @@ public class Telas extends Application {
 
 	public static void ClientSignUp() {
 		try {
-			Parent root = FXMLLoader.load(Telas.class.getClassLoader()
-					.getResource("br/edu/ufersa/pizzaria/view/resources/clientSignUp.fxml"));
+			Parent root = FXMLLoader.load(Telas.class.getClassLoader().getResource("br/edu/ufersa/pizzaria/view/resources/clientSignUp.fxml"));
 			Scene cena = new Scene(root);
 
 			stage.setTitle("Pizzaria-Cadastro");
