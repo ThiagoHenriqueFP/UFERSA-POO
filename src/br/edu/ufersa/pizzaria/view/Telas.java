@@ -6,10 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Telas extends Application {
+public class Telas extends Application{
 
 	private static Stage stage;
-
+	
 	public static void main(String[] args) {
 		launch();
 	}
@@ -17,71 +17,71 @@ public class Telas extends Application {
 	public static void setStage(Stage st) {
 		stage = st;
 	}
-
+		
+	
 	@Override
-	public void start(Stage stage) throws Exception {
-
+	public void start(Stage stage) throws Exception {		
+		
 		setStage(stage);
 		stage.setTitle("Teste");
-		telaLogin();
+		telaLogin();	
 	}
-
+	
 	public static void telaLogin() {
 		try {
-			Parent root = FXMLLoader.load(
-					Telas.class.getClassLoader().getResource("br/edu/ufersa/pizzaria/view/resources/telaLogin.fxml"));
+			Parent root = FXMLLoader.load(Telas.class.getClassLoader().getResource("br/edu/ufersa/pizzaria/view/resources/telaLogin.fxml"));
 			Scene cena = new Scene(root);
-
+			
 			stage.setTitle("Pizzaria-Login");
 			stage.setScene(cena);
 			stage.show();
-
-		} catch (Exception a) {
+			
+		}catch(Exception a){
 			a.printStackTrace();
 		}
 	}
-
+	
 	public static void telaHome() {
 		try {
 			Parent root = FXMLLoader.load(Telas.class.getClassLoader().getResource("br/edu/ufersa/pizzaria/view/resources/optionsSession.fxml"));
 			Scene cena = new Scene(root);
-
+			
 			stage.setTitle("Pizzaria-Home");
 			stage.setScene(cena);
 			stage.show();
-
-		} catch (Exception a) {
+			
+		}catch(Exception a){
 			a.printStackTrace();
 		}
 	}
 
 	public static void telaClient() {
 		try {
-			Parent root = FXMLLoader.load(
-					Telas.class.getClassLoader().getResource("br/edu/ufersa/pizzaria/view/resources/listClient.fxml"));
+			Parent root = FXMLLoader.load(Telas.class.getClassLoader().getResource("br/edu/ufersa/pizzaria/view/resources/listClient.fxml"));
 			Scene cena = new Scene(root);
-
-			stage.setTitle("Pizzaria-Clientes");
+			
+			stage.setTitle("Pizzaria-Home");
 			stage.setScene(cena);
 			stage.show();
-
-		} catch (Exception a) {
+			
+		}catch(Exception a){
 			a.printStackTrace();
 		}
 	}
-
+	
 	public static void ClientSignUp() {
 		try {
 			Parent root = FXMLLoader.load(Telas.class.getClassLoader().getResource("br/edu/ufersa/pizzaria/view/resources/clientSignUp.fxml"));
 			Scene cena = new Scene(root);
-
-			stage.setTitle("Pizzaria-Cadastro");
+			
+			stage.setTitle("Pizzaria-Home");
 			stage.setScene(cena);
 			stage.show();
-
-		} catch (Exception a) {
+			
+		}catch(Exception a){
 			a.printStackTrace();
 		}
 	}
+
 
 }

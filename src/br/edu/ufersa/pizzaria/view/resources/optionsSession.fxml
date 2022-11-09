@@ -11,19 +11,19 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.pizzaria.api.controllers.OptionsSessionController">
    <children>
-      <Pane layoutX="-132.0" layoutY="-114.0" prefHeight="1015.0" prefWidth="1440.0">
+      <Pane layoutX="-132.0" layoutY="-114.0" minHeight="768.0" minWidth="1366.0" prefHeight="1015.0" prefWidth="1440.0">
          <children>
             <ImageView fitHeight="1015.0" fitWidth="1440.0" layoutX="129.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/background.png" />
                </image>
             </ImageView>
-            <Text fill="WHITE" layoutX="797.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
+            <Text fill="WHITE" layoutX="778.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home">
                <font>
                   <Font size="39.0" />
                </font>
             </Text>
-            <Line endX="122.0" layoutX="855.0" layoutY="214.0" startX="-131.0" stroke="#cf2525" />
+            <Line endX="100.0" layoutX="830.0" layoutY="214.0" startX="-100.0" stroke="#cf2525" />
             <Button layoutX="617.0" layoutY="323.0" mnemonicParsing="false" onAction="#sessionClient" style="-fx-pref-width: 477px; -fx-pref-height: 99px; -fx-background-color: #BE2929; -fx-border-radius: 30px;" text="Clientes" textFill="WHITE">
                <font>
                   <Font name="Calibri" size="30.0" />
