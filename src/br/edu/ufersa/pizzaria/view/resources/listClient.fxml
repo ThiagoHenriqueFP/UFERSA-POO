@@ -18,7 +18,7 @@
                   <Image url="@../images/background.png" />
                </image>
             </ImageView>
-            <Button layoutX="121.0" layoutY="182.0" mnemonicParsing="false" onAction="#back" style="-fx-border-radius: 25px; -fx-background-color: #ffffff;" text="&lt;">
+            <Button layoutX="121.0" layoutY="182.0" mnemonicParsing="false" onAction="#back" style="-fx-background-radius: 25px; -fx-background-color: #ffffff;" text="&lt;">
                <font>
                   <Font name="Calibri" size="30.0" />
                </font>
@@ -30,7 +30,7 @@
                   <TableColumn fx:id="addresColumn" minWidth="200.0" prefWidth="750.0" text="ENDEREÇO" />
               </columns>
             </TableView>
-            <Button layoutX="1212.0" layoutY="942.0" mnemonicParsing="false" onAction="#btnClient" prefHeight="44.0" prefWidth="186.0" style="-fx-background-color: #6CAD36; -fx-border-radius: 25px;" text="Cadastrar Cliente" textFill="WHITE">
+            <Button layoutX="1212.0" layoutY="942.0" mnemonicParsing="false" onAction="#btnClient" prefHeight="44.0" prefWidth="186.0" style="-fx-background-color: #6CAD36; -fx-background-radius: 25px;" text="Cadastrar Cliente" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
