@@ -11,8 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="br.edu.ufersa.pizzaria.api.controllers.ClientSignUpController">
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.pizzaria.api.controllers.ClientSignUpController">
    <children>
       <Pane layoutX="-116.0" layoutY="-146.0" prefHeight="1015.0" prefWidth="1440.0">
          <children>
@@ -22,7 +21,7 @@
                </image>
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#8c8c8c" height="750.0" layoutX="445.0" layoutY="222.0" stroke="BLACK" strokeType="INSIDE" style="-fx-opacity: 0.2px;" width="650.0" />
-            <Button layoutX="159.0" layoutY="176.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="30.0" prefWidth="33.0" style="-fx-background-color: #FFFFFF;" text="&lt;" />
+            <Button layoutX="159.0" layoutY="176.0" mnemonicParsing="false" onAction="#btnBack" prefHeight="30.0" prefWidth="33.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25px;" text="&lt;" />
             <Text fill="WHITE" layoutX="703.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CADASTRO">
                <font>
                   <Font name="Calibri" size="30.0" />
@@ -64,7 +63,7 @@
                   <Font name="Calibri" size="15.0" />
                </font>
             </TextField>
-            <Button layoutX="684.0" layoutY="745.0" mnemonicParsing="false" onAction="#signUP" prefHeight="57.0" prefWidth="188.0" style="-fx-background-color: #83E532; -fx-border-radius: 25px;" text="CADASTRAR CLIENTE" textFill="WHITE">
+            <Button layoutX="684.0" layoutY="745.0" mnemonicParsing="false" onAction="#signUP" prefHeight="57.0" prefWidth="188.0" style="-fx-background-color: #83E532; -fx-background-radius: 25px;" text="CADASTRAR CLIENTE" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
