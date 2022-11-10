@@ -1,7 +1,5 @@
 package br.edu.ufersa.pizzaria.api.controllers;
 
-import javax.swing.JOptionPane;
-
 import br.edu.ufersa.pizzaria.api.dto.ClientDTO;
 import br.edu.ufersa.pizzaria.model.service.ClientService;
 import br.edu.ufersa.pizzaria.view.Telas;
