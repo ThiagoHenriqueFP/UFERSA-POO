@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
+// alterar o path das views
+
 public class ClientSignUpController {
 	@FXML private ImageView backgroundImg;
 	@FXML private TextField clientNameSignUp;
