@@ -14,37 +14,37 @@
    <children>
       <ImageView fitHeight="785.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Desktop/Universidade/Terceiro%20Periodo/POO/Imagens%20JFX/telaHome/background.jpg" />
+            <Image url="@image/background.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="434.0" fitWidth="92.0" layoutX="14.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Desktop/Universidade/Terceiro%20Periodo/POO/Imagens%20JFX/telaHome/Rectangle%2039.png" />
+            <Image url="@image/Rectangle%2039.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="102.0" fitWidth="75.0" layoutX="22.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Desktop/Universidade/Terceiro%20Periodo/POO/Imagens%20JFX/telaHome/CLIENTE.png" />
+            <Image url="@image/CLIENTE.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="22.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Desktop/Universidade/Terceiro%20Periodo/POO/Imagens%20JFX/telaHome/ESTOQUE.png" />
+            <Image url="@image/ESTOQUE.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="69.0" fitWidth="75.0" layoutX="25.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Desktop/Universidade/Terceiro%20Periodo/POO/Imagens%20JFX/telaHome/PEDIDO.png" />
+            <Image url="@image/PEDIDO.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="69.0" fitWidth="69.0" layoutX="25.0" layoutY="478.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Desktop/Universidade/Terceiro%20Periodo/POO/Imagens%20JFX/telaHome/PIZZA.png" />
+            <Image url="@image/PIZZA.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="87.0" fitWidth="281.0" layoutX="543.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Desktop/Universidade/Terceiro%20Periodo/POO/Imagens%20JFX/telaHome/Rectangle%2030.png" />
+            <Image url="@image/Rectangle%2030.png" />
          </image>
       </ImageView>
       <Text fill="WHITE" layoutX="568.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista de Pedidos">

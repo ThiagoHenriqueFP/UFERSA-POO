@@ -12,17 +12,17 @@
    <children>
       <ImageView fitHeight="971.0" fitWidth="1373.0" layoutX="-3.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Desktop/Universidade/Terceiro%20Periodo/POO/Imagens%20JFX/telaLogin/background.jpg" />
+            <Image url="@image/background.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="436.0" fitWidth="503.0" layoutX="129.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Desktop/Universidade/Terceiro%20Periodo/POO/Imagens%20JFX/telaLogin/logo.png" />
+            <Image url="@image/logo.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="361.0" fitWidth="290.0" layoutX="928.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Desktop/Universidade/Terceiro%20Periodo/POO/Imagens%20JFX/telaLogin/Rectangle%201.png" />
+            <Image url="@image/Rectangle%201.png" />
          </image>
       </ImageView>
       <TextField fx:id="login" layoutX="979.0" layoutY="318.0" prefHeight="25.0" prefWidth="193.0" style="-fx-background-radius: 10;" />
