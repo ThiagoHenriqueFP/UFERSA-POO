@@ -7,6 +7,14 @@ public class Client{
 	private String cpf; //CHAVE
 	private String address;
 	
+	public static Client convertDTO(ClientDTO c) {
+		Client cl = new Client();
+		cl.setName(c.getName());
+		cl.setCPF(c.getCPF());
+		cl.setAddress(c.getAddress());
+		return cl;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -28,7 +36,7 @@ public class Client{
 			if (name!="")
 				this.name = name;
 		} else {			
-			this.name = "Franchesco";
+			this.name = null;
 		}
 	}
 	
@@ -42,14 +50,6 @@ public class Client{
 	}
 	public String getAddress() {
 		return address;
-	}
-	
-	public static Client convert(ClientDTO c) {
-		Client client = new Client();
-		client.setName(c.getName());
-		client.setCPF(c.getCpf());
-		client.setAddress(c.getAddress());
-		return client;
 	}
 	
 }

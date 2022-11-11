@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="768.0" maxWidth="1366.0" minHeight="768.0" minWidth="1366.0" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.pizzaria.api.controllers.ClientController">
+<AnchorPane maxHeight="768.0" maxWidth="1366.0" minHeight="768.0" minWidth="1366.0" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.pizzaria.api.controllers.ClientListController">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1388.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -19,24 +20,25 @@
             <Image url="@image/arrowbackbutton_79955%201.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="25.0" fitWidth="358.0" layoutX="504.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="4.0" fitWidth="358.0" layoutX="538.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image/Rectangle%2030.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="136.0" fitWidth="328.0" layoutX="519.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="29.0" fitWidth="273.0" layoutX="581.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image/LISTA%20DE%20CLIENTES.png" />
          </image>
       </ImageView>
-      <Button layoutX="34.0" layoutY="33.0" mnemonicParsing="false" onAction="#voltar" opacity="0.0" prefHeight="46.0" prefWidth="43.0" text="Button" />
-      <TableView layoutX="157.0" layoutY="95.0" prefHeight="597.0" prefWidth="1120.0">
+      <Button layoutX="34.0" layoutY="33.0" mnemonicParsing="false" onAction="#voltar" opacity="0.0" prefHeight="46.0" prefWidth="43.0" text="Button">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <TableView fx:id="tableClient" layoutX="157.0" layoutY="95.0" prefHeight="597.0" prefWidth="1120.0">
         <columns>
-          <TableColumn fx:id="name" prefWidth="75.0" text="Nome" />
-          <TableColumn fx:id="cpf" prefWidth="75.0" text="CPF" />
-            <TableColumn fx:id="address" prefWidth="75.0" text="Endereço" />
-            <TableColumn fx:id="number" prefWidth="75.0" text="Número" />
-            <TableColumn fx:id="edit" prefWidth="75.0" text="Editar" />
+          <TableColumn fx:id="nameList" minWidth="200.0" prefWidth="75.0" text="Nome" />
+          <TableColumn fx:id="cpfList" minWidth="120.0" prefWidth="75.0" text="CPF" />
+            <TableColumn fx:id="addressList" minWidth="350.0" prefWidth="75.0" text="Endereço" />
         </columns>
       </TableView>
    </children>

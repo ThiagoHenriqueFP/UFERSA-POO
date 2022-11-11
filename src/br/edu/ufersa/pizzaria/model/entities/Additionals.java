@@ -26,9 +26,5 @@ public class Additionals {
     public double getValue(){return value;}
     
     public int getId() {return id;}
-    
-    public void setId(int id) {
-		this.id = id;
-	}
-}
 
+}
