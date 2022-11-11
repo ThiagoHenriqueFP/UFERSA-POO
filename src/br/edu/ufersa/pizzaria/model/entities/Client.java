@@ -6,6 +6,7 @@ public class Client{
 	private String name;
 	private String cpf; //CHAVE
 	private String address;
+	private int id;
 	
 	public static Client convertDTO(ClientDTO c) {
 		Client cl = new Client();
@@ -52,4 +53,18 @@ public class Client{
 		return address;
 	}
 	
+	public int getId() {return id;}
+    
+    public void setId(int id) {
+		this.id = id;
+	}
+	
+	public static Client convert(ClientDTO c) {
+		Client client = new Client();
+		client.setName(c.getName());
+		client.setCPF(c.getCPF());
+		client.setAddress(c.getAddress());
+		return client;
+	}
 }
+	

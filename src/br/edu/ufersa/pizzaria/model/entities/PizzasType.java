@@ -7,6 +7,7 @@ public class PizzasType {
     private String type; //CHAVE
     private String size;
     private double value;
+    private int id;
     
     public static PizzasType convertDTO(PizzaTypeDTO p) {
     	PizzasType pi = new PizzasType();
@@ -44,10 +45,16 @@ public class PizzasType {
     public String getType() {
         return type;
     }
+    
     public double getValue() {
         return value;
     }
-    public String getSize() {
-    	return size;
-    }
+    
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 }

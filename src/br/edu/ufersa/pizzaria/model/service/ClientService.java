@@ -39,7 +39,7 @@ public class ClientService {
 				ClientDTO client = new ClientDTO();
 				client.setName(rs.getString("name"));
 				client.setAddress(rs.getString("address"));
-				client.setCpf(rs.getString("cpf"));
+				client.setCPF(rs.getString("cpf"));
 				
 				clients.add(client);
 			}
