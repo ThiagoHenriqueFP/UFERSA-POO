@@ -4,6 +4,7 @@ public class Storage{
     //Atributos
     private String item; //CHAVE
     private int quantity;
+    private int id;
 
     //Metodos Get e Set
     public void setItem(String item) {
@@ -28,6 +29,12 @@ public class Storage{
     }
     public int getQuantity() {
         return quantity;
+    }
+    
+    public int getId() {return id;}
+    
+    public void SetId(int id) {
+    	this.id = id;
     }
 
 }

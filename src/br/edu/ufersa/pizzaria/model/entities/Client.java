@@ -6,6 +6,7 @@ public class Client{
 	private String name;
 	private String cpf; //CHAVE
 	private String address;
+	private int id;
 	
 	public String getName() {
 		return name;
@@ -42,6 +43,12 @@ public class Client{
 	}
 	public String getAddress() {
 		return address;
+	}
+	
+	public int getId() {return id;}
+    
+    public void setId(int id) {
+		this.id = id;
 	}
 	
 	public static Client convert(ClientDTO c) {

@@ -4,6 +4,7 @@ public class PizzasType {
     //Atributos
     private String type; //CHAVE
     private double value;
+    private int id;
 
     //Métodos Getter e Setter
     public void setType(String type) {
@@ -28,4 +29,11 @@ public class PizzasType {
     public double getValue() {
         return value;
     }
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+    
 }

@@ -9,7 +9,7 @@ import br.edu.ufersa.pizzaria.model.entities.Client;
 public class ClientDAO extends BaseDAO<Client>{
 	
 	public boolean addClient(Client client) {
-		String sql = "INSERT INTO client  (name,address,cpf) VALUES (?,?,?);";
+		String sql = "INSERT INTO client (name,address,cpf) VALUES (?,?,?);";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, client.getName());
@@ -39,7 +39,7 @@ public class ClientDAO extends BaseDAO<Client>{
 	}
 	
 	public boolean editClient(Client client) {
-		String sql = "UPDATE *TABLE NAME HERE*/ SET name=?,address=? WHERE cpf=? ";
+		String sql = "UPDATE client SET name=?,address=? WHERE cpf=? ";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, client.getName());
