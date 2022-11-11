@@ -31,7 +31,7 @@ public class HomeController implements Initializable{
 	@FXML private TableColumn<OrderDTO,String> pizzaType;
 	@FXML private TableColumn<OrderDTO,String> additionalName;
 	@FXML private TableColumn<OrderDTO,String> state;
-	@FXML private TableColumn<OrderDTO,String> edit;
+	//@FXML private TableColumn<OrderDTO,String> edit;
 	
 	private List<OrderDTO> orderList = new ArrayList<OrderDTO>();
 	
@@ -70,7 +70,7 @@ public class HomeController implements Initializable{
 			Screen.telaDeCadastroPizza();
 		}
 		else {
-			JOptionPane.showMessageDialog(null, "Abrindo tela de Lista!");
+			Screen.telaDeListarPizza();
 		}
 	}
 	
@@ -89,9 +89,9 @@ public class HomeController implements Initializable{
 		clientName.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("clientName"));
 		size.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("size"));
 		pizzaType.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("pizzaType"));
-		additionalName.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("additionalName"));
+		additionalName.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("AddiName"));
 		state.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("state"));
-		edit.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("edit"));
+		//edit.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("edit"));
 		
 		OrderDTO o1 = new OrderDTO("Vinicius Dantas de Sousa","Calabresa","Nenhum","M","Preparando","Edit");
 		OrderDTO o2 = new OrderDTO("Whesley Xavier","Frango Catupiry","Milho","P","Saiu para entrega","Edit");

@@ -1,21 +1,10 @@
-package br.edu.ufersa.pizzaria.model.entities;
+package br.edu.ufersa.pizzaria.api.dto;
 
-import br.edu.ufersa.pizzaria.api.dto.PizzaTypeDTO;
-
-public class PizzasType {
-    //Atributos
+public class PizzaTypeDTO {
+	//Atributos
     private String type; //CHAVE
     private String size;
     private double value;
-    private int id;
-    
-    public static PizzasType convertDTO(PizzaTypeDTO p) {
-    	PizzasType pi = new PizzasType();
-    	pi.setType(p.getType());
-    	pi.setSize(p.getSize());
-    	pi.setValue(p.getValue());
-    	return pi;
-    }
 
     //Métodos Getter e Setter
     public void setType(String type) {
@@ -45,16 +34,10 @@ public class PizzasType {
     public String getType() {
         return type;
     }
-    
     public double getValue() {
         return value;
     }
-    
-	public int getId() {
-		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
+    public String getSize() {
+    	return size;
+    }
 }

@@ -24,7 +24,7 @@ public class ClientSignUpController {
 	@FXML public void signUP(ActionEvent event){
 		ClientDTO clientDTO = new ClientDTO();
 		clientDTO.setName(clientNameSignUp.getText());
-		clientDTO.setCpf(clientCpfSignUp.getText());
+		clientDTO.setCPF(clientCpfSignUp.getText());
 		clientDTO.setAddress(clientAdressSignUp.getText());
 		clientService.addClient(clientDTO);
 	}

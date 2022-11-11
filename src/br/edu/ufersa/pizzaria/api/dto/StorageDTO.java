@@ -1,20 +1,10 @@
-package br.edu.ufersa.pizzaria.model.entities;
+package br.edu.ufersa.pizzaria.api.dto;
 
-import br.edu.ufersa.pizzaria.api.dto.StorageDTO;
-
-public class Storage{
-    //Atributos
+public class StorageDTO {
+	//Atributos
     private String item; //CHAVE
     private int quantity;
-    private int id;
-    
-    public static Storage convertDTO(StorageDTO s) {
-    	Storage st = new Storage();
-    	st.setItem(s.getItem());
-    	st.setQuantity(s.getQuantity());
-    	return st;
-    }
-    
+
     //Metodos Get e Set
     public void setItem(String item) {
         if(!item.isEmpty()){
@@ -39,11 +29,4 @@ public class Storage{
     public int getQuantity() {
         return quantity;
     }
-    
-    public int getId() {return id;}
-    
-    public void SetId(int id) {
-    	this.id = id;
-    }
-
 }
