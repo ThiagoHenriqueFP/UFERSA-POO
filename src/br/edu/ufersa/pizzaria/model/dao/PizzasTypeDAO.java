@@ -77,7 +77,7 @@ public class PizzasTypeDAO extends BaseDAO<PizzasType> {
 	
 	@Override
 	public ResultSet getAll() {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/;";
+		String sql = "SELECT * FROM pizza;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();

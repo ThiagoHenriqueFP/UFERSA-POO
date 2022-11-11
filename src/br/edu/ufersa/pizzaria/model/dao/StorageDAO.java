@@ -56,7 +56,7 @@ public class StorageDAO extends BaseDAO<Storage>{
 	}
 	
 	public Storage findByItem(Storage s) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE item=?;";
+		String sql = "SELECT * FROM storage WHERE item=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, s.getItem());
@@ -77,7 +77,7 @@ public class StorageDAO extends BaseDAO<Storage>{
 	
 	@Override
 	public ResultSet getAll() {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/;";
+		String sql = "SELECT * FROM storage;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
