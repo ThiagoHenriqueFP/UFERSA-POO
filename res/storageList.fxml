@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="768.0" maxWidth="1366.0" minHeight="768.0" minWidth="1366.0" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.pizzaria.api.controllers.StorageController">
+<AnchorPane maxHeight="768.0" maxWidth="1366.0" minHeight="768.0" minWidth="1366.0" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.pizzaria.api.controllers.StorageListController">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1388.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -29,12 +30,15 @@
             <Image url="@image/ESTOQUE%20(1).png" />
          </image>
       </ImageView>
-      <Button layoutX="34.0" layoutY="33.0" mnemonicParsing="false" onAction="#voltar" opacity="0.0" prefHeight="46.0" prefWidth="43.0" text="Button" />
+      <Button layoutX="34.0" layoutY="33.0" mnemonicParsing="false" onAction="#voltar" opacity="0.0" prefHeight="46.0" prefWidth="43.0" text="Button">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <TableView layoutX="157.0" layoutY="95.0" prefHeight="597.0" prefWidth="1120.0">
         <columns>
-          <TableColumn fx:id="item" prefWidth="75.0" text="Produto" />
-          <TableColumn fx:id="quant" prefWidth="75.0" text="Qnt/Kg" />
-            <TableColumn fx:id="code" prefWidth="75.0" text="Código" />
+          <TableColumn fx:id="produto" prefWidth="75.0" text="Produto" />
+          <TableColumn fx:id="qnt" prefWidth="75.0" text="Qnt/Kg" />
+            <TableColumn fx:id="code" prefWidth="75.0" text="Codigo" />
             <TableColumn fx:id="edit" prefWidth="75.0" text="Editar" />
         </columns>
       </TableView>

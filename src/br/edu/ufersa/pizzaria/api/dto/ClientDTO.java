@@ -1,19 +1,9 @@
-package br.edu.ufersa.pizzaria.model.entities;
+package br.edu.ufersa.pizzaria.api.dto;
 
-import br.edu.ufersa.pizzaria.api.dto.ClientDTO;
-
-public class Client{
+public class ClientDTO {
 	private String name;
 	private String cpf; //CHAVE
 	private String address;
-	
-	public static Client convertDTO(ClientDTO c) {
-		Client cl = new Client();
-		cl.setName(c.getName());
-		cl.setCPF(c.getCPF());
-		cl.setAddress(c.getAddress());
-		return cl;
-	}
 	
 	public String getName() {
 		return name;
@@ -36,7 +26,7 @@ public class Client{
 			if (name!="")
 				this.name = name;
 		} else {			
-			this.name = null;
+			this.name = "Franchesco";
 		}
 	}
 	
@@ -51,5 +41,4 @@ public class Client{
 	public String getAddress() {
 		return address;
 	}
-	
 }

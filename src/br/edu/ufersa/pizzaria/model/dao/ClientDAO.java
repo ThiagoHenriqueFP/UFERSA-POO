@@ -8,8 +8,9 @@ import br.edu.ufersa.pizzaria.model.entities.Client;
 
 public class ClientDAO extends BaseDAO<Client>{
 	
-	public boolean addClient(Client client) {
-		String sql = "INSERT INTO /*TABLE NAME HERE*/  (name,address,cpf) VALUES (?,?,?);";
+	@Override
+	public boolean add(Client client) {
+		String sql = "INSERT INTO client (name,address,cpf) VALUES (?,?,?);";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, client.getName());
@@ -24,8 +25,9 @@ public class ClientDAO extends BaseDAO<Client>{
 		}
 	}
 	
-	public boolean deleteClient(Client client) {
-		String sql = "DELETE FROM /*TABLE NAME HERE*/ WHERE cpf=?;";
+	@Override
+	public boolean delete(Client client) {
+		String sql = "DELETE FROM client WHERE cpf=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, client.getCPF());
@@ -38,8 +40,9 @@ public class ClientDAO extends BaseDAO<Client>{
 		}
 	}
 	
-	public boolean editClient(Client client) {
-		String sql = "UPDATE *TABLE NAME HERE*/ SET name=?,address=? WHERE cpf=? ";
+	@Override
+	public boolean edit(Client client) {
+		String sql = "UPDATE client SET name=?,address=? WHERE cpf=? ";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, client.getName());
@@ -54,30 +57,9 @@ public class ClientDAO extends BaseDAO<Client>{
 		}
 	}
 	
-	public Client findByCPF(Client c) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE cpf=?;";
-		try {
-			PreparedStatement pst = getConnection().prepareStatement(sql);
-			pst.setString(1, c.getCPF());
-			ResultSet rs = pst.executeQuery();
-			if(rs.next()) {
-				Client cc = new Client();
-				cc.setName(rs.getString("name"));
-				cc.setAddress(rs.getString("address"));
-				cc.setCPF(cc.getCPF());
-				return cc;
-			}
-			else return null;
-		
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-			return null;
-		}
-	}
-	
 	@Override
 	public ResultSet getAll() {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/;";
+		String sql = "SELECT * FROM client;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
@@ -91,7 +73,7 @@ public class ClientDAO extends BaseDAO<Client>{
 	
 	@Override
 	public ResultSet findBySpecifiedField(Client c, String field) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE " + field +"=?;";
+		String sql = "SELECT * FROM client WHERE " + field +"=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			switch (field) {
@@ -105,6 +87,7 @@ public class ClientDAO extends BaseDAO<Client>{
 			
 			default: 
 				pst.setString(1, c.getCPF());
+				break;
 			}
 			
 			ResultSet rs = pst.executeQuery();
@@ -114,23 +97,5 @@ public class ClientDAO extends BaseDAO<Client>{
 			ex.printStackTrace();
 			return null;
 		}
-	}
-	
-	public Client findAddress(Client client) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE id=? ;";
-		try {
-			PreparedStatement pst = getConnection().prepareStatement(sql);
-			pst.setString(1, client.getCPF());
-			ResultSet rs = pst.executeQuery();
-			if(rs.next()) {
-				return client;
-			}
-			else return null;
-		
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-		
 	}
 }

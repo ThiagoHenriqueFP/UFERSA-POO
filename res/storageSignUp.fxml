@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -35,7 +36,10 @@
             <Image url="@image/CADASTRO.png" />
          </image>
       </ImageView>
-      <Button layoutX="34.0" layoutY="33.0" mnemonicParsing="false" onAction="#voltar" opacity="0.0" prefHeight="46.0" prefWidth="43.0" text="Button" />
+      <Button layoutX="34.0" layoutY="33.0" mnemonicParsing="false" onAction="#voltar" opacity="0.0" prefHeight="46.0" prefWidth="43.0" text="Button">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
       <Text fill="WHITE" layoutX="642.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produto">
          <font>
             <Font size="24.0" />
@@ -61,8 +65,13 @@
             <Image url="@image/Vector.png" />
          </image>
       </ImageView>
-      <TextField layoutX="543.0" layoutY="198.0" prefHeight="35.0" prefWidth="281.0" style="-fx-background-radius: 20;" />
-      <TextField layoutX="542.0" layoutY="322.0" prefHeight="35.0" prefWidth="281.0" style="-fx-background-radius: 20;" />
-      <TextField layoutX="544.0" layoutY="441.0" prefHeight="35.0" prefWidth="281.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="produto" layoutX="543.0" layoutY="198.0" prefHeight="35.0" prefWidth="281.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="quant" layoutX="542.0" layoutY="322.0" prefHeight="35.0" prefWidth="281.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="cod" layoutX="544.0" layoutY="441.0" prefHeight="35.0" prefWidth="281.0" style="-fx-background-radius: 20;" />
+      <Button layoutX="569.0" layoutY="614.0" mnemonicParsing="false" onAction="#storageSignUp" opacity="0.0" prefHeight="61.0" prefWidth="231.0" text="Button">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

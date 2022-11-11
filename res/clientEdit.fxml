@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="768.0" maxWidth="1366.0" minHeight="768.0" minWidth="1366.0" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.pizzaria.api.controllers.ClientController">
+<AnchorPane maxHeight="768.0" maxWidth="1366.0" minHeight="768.0" minWidth="1366.0" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.pizzaria.api.controllers.ClientEditController">
    <children>
       <ImageView fitHeight="768.0" fitWidth="1388.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -26,9 +26,9 @@
             <Image url="@image/arrowbackbutton_79955%201.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="74.0" fitWidth="228.0" layoutX="569.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="74.0" fitWidth="228.0" layoutX="434.0" layoutY="610.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/BTN%20Client%20(1).png" />
+            <Image url="@image/BTN%20Client%20(5).png" />
          </image>
       </ImageView>
       <ImageView fitHeight="27.0" fitWidth="258.0" layoutX="555.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
@@ -36,25 +36,19 @@
             <Image url="@image/Rectangle%2030.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="583.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="154.0" layoutX="617.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/CADASTRO.png" />
+            <Image url="@image/EDITAR.png" />
          </image>
       </ImageView>
       <TextField fx:id="name" layoutX="516.0" layoutY="182.0" prefHeight="37.0" prefWidth="355.0" style="-fx-background-radius: 20;" />
-      <TextField fx:id="cpf" layoutX="516.0" layoutY="289.0" prefHeight="37.0" prefWidth="355.0" style="-fx-background-radius: 20;" />
-      <TextField fx:id="address" layoutX="516.0" layoutY="418.0" prefHeight="37.0" prefWidth="355.0" style="-fx-background-radius: 20;" />
+      <TextField fx:id="address" layoutX="516.0" layoutY="347.0" prefHeight="37.0" prefWidth="355.0" style="-fx-background-radius: 20;" />
       <Text fill="WHITE" layoutX="605.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome Completo">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="662.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CPF" wrappingWidth="43.01953125">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="631.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereço" wrappingWidth="106.01953125">
+      <Text fill="WHITE" layoutX="640.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Endereço" wrappingWidth="106.01953125">
          <font>
             <Font size="24.0" />
          </font>
@@ -63,9 +57,19 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button layoutX="578.0" layoutY="629.0" mnemonicParsing="false" onAction="#signUp" opacity="0.0" prefHeight="61.0" prefWidth="209.0" text="Button">
+      <Button layoutX="444.0" layoutY="610.0" mnemonicParsing="false" onAction="#editClient" opacity="0.0" prefHeight="61.0" prefWidth="209.0" text="Button">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
+      <ImageView fitHeight="75.0" fitWidth="228.0" layoutX="705.0" layoutY="610.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/BTN%20Client%20(6).png" />
+         </image>
+      </ImageView>
+      <Button layoutX="715.0" layoutY="610.0" mnemonicParsing="false" onAction="#deleteClient" opacity="0.0" prefHeight="61.0" prefWidth="209.0" text="Button">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>
