@@ -1,10 +1,13 @@
-package br.edu.ufersa.pizzaria.model.service;
+package br.edu.ufersa.pizzaria.model.services;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
+import br.edu.ufersa.pizzaria.api.dto.StorageDTO;
 import br.edu.ufersa.pizzaria.model.dao.BaseInterDAO;
 import br.edu.ufersa.pizzaria.model.dao.StorageDAO;
 import br.edu.ufersa.pizzaria.model.entities.Storage;
@@ -13,11 +16,13 @@ public class StorageService {
 	
 	BaseInterDAO<Storage> dao = new StorageDAO();
 	
-	public boolean addItem(Storage s) {
-		ResultSet rs = dao.findBySpecifiedField(s, "item");
+	public boolean addItem(StorageDTO s) {
+		Storage st = Storage.convertDTO(s);
+		ResultSet rs = dao.findBySpecifiedField(st, "name");
 		try {
 			if(rs == null || !rs.next()) {
-				if(dao.add(s) == true) {
+				if(dao.add(st) == true) {
+					JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso!");
 					return true;
 				}
 				else return false;
@@ -30,12 +35,12 @@ public class StorageService {
 		}
 	}
 	
-	public List<Storage> getAllItens(){
-		List<Storage> itens = new ArrayList<Storage>();
+	public List<StorageDTO> getAllItens(){
+		List<StorageDTO> itens = new ArrayList<StorageDTO>();
 		ResultSet rs = dao.getAll();
 		try {
 			while(rs.next()) {
-				Storage s = new Storage();
+				StorageDTO s = new StorageDTO();
 				s.setItem(rs.getString("item"));
 				s.setQuantity(rs.getInt("quantity"));
 				
@@ -49,11 +54,12 @@ public class StorageService {
 		}
 	}
 	
-	public boolean editItem(Storage s) {
-		ResultSet rs = dao.findBySpecifiedField(s, "item");
+	public boolean editItem(StorageDTO s) {
+		Storage st = Storage.convertDTO(s);
+		ResultSet rs = dao.findBySpecifiedField(st, "item");
 		try {
 			if(rs!=null && rs.next()) {
-				if(dao.edit(s) == true) {
+				if(dao.edit(st) == true) {
 					return true;
 				}
 				else return false;
@@ -66,11 +72,12 @@ public class StorageService {
 		}
 	}
 	
-	public boolean deleteItem(Storage s) {
-		ResultSet rs = dao.findBySpecifiedField(s, "item");
+	public boolean deleteItem(StorageDTO s) {
+		Storage st = Storage.convertDTO(s);
+		ResultSet rs = dao.findBySpecifiedField(st, "item");
 		try {
 			if(rs!=null && rs.next()) {
-				if(dao.delete(s) == true) {
+				if(dao.delete(st) == true) {
 					return true;
 				}
 				else return false;

@@ -6,6 +6,7 @@ public class Storage{
     //Atributos
     private String item; //CHAVE
     private int quantity;
+    private int cod;
     
     public static Storage convertDTO(StorageDTO s) {
     	Storage st = new Storage();
@@ -39,4 +40,15 @@ public class Storage{
         return quantity;
     }
 
+	public int getCod() {
+		return cod;
+	}
+	public void setCod(int cod) {
+		  if(cod > 0){
+	            this.cod = cod;
+	        }
+	        else{
+	            this.cod = 0;
+	        }
+	}
 }
