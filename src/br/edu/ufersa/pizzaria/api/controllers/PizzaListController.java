@@ -20,29 +20,33 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
-public class PizzaListController implements Initializable{
-	
-	@FXML private TableView<PizzaTypeDTO> tablePizza;
-	@FXML private TableColumn<PizzaTypeDTO, String> typeList;
-	@FXML private TableColumn<PizzaTypeDTO, String> sizeList;
-	@FXML private TableColumn<PizzaTypeDTO, Double> valueList;
-	@FXML private TableColumn<PizzaTypeDTO, Void> edit = new TableColumn<PizzaTypeDTO, Void>("Editar Pizza");
-	
-	
+public class PizzaListController implements Initializable {
+
+	@FXML
+	private TableView<PizzaTypeDTO> tablePizza;
+	@FXML
+	private TableColumn<PizzaTypeDTO, String> typeList;
+	@FXML
+	private TableColumn<PizzaTypeDTO, String> sizeList;
+	@FXML
+	private TableColumn<PizzaTypeDTO, Double> valueList;
+	@FXML
+	private TableColumn<PizzaTypeDTO, Void> edit = new TableColumn<PizzaTypeDTO, Void>("Editar Pizza");
+
 	private List<PizzaTypeDTO> pizzaList;
 	private ObservableList<PizzaTypeDTO> obsList;
 	protected static PizzaTypeDTO pizzaRow;
 	private PizzasTypeService pizzaService = new PizzasTypeService();
-	
+
 	public void listStorage() {
-		//storageList = storageService.getAllItens();
+		// storageList = storageService.getAllItens();
 		pizzaList = new ArrayList<PizzaTypeDTO>();
 		PizzaTypeDTO dto = new PizzaTypeDTO();
 		dto.setType("Cala a boca");
 		dto.setSize("M");
 		dto.setValue(24);
 		pizzaList.add(dto);
-		
+
 		obsList = FXCollections.observableArrayList(pizzaList);
 		typeList.setCellValueFactory(new PropertyValueFactory<PizzaTypeDTO, String>("type"));
 		sizeList.setCellValueFactory(new PropertyValueFactory<PizzaTypeDTO, String>("size"));
@@ -50,50 +54,48 @@ public class PizzaListController implements Initializable{
 		tablePizza.setItems(obsList);
 		addBtnToColumn();
 	}
-	
+
 	public void addBtnToColumn() {
-		Callback<TableColumn<PizzaTypeDTO, Void>, TableCell<PizzaTypeDTO, Void>> cellFactory = new Callback<TableColumn<PizzaTypeDTO, Void>, TableCell<PizzaTypeDTO, Void>>(){
+		Callback<TableColumn<PizzaTypeDTO, Void>, TableCell<PizzaTypeDTO, Void>> cellFactory = new Callback<TableColumn<PizzaTypeDTO, Void>, TableCell<PizzaTypeDTO, Void>>() {
 
 			@Override
 			public TableCell<PizzaTypeDTO, Void> call(TableColumn<PizzaTypeDTO, Void> arg0) {
-				
-				final TableCell<PizzaTypeDTO,Void> cell = new TableCell<PizzaTypeDTO,Void>(){
-					
+
+				final TableCell<PizzaTypeDTO, Void> cell = new TableCell<PizzaTypeDTO, Void>() {
+
 					private final Button btn = new Button("Edit");
-					
+
 					{
 						btn.setOnAction((ActionEvent event) -> {
 							pizzaRow = getTableView().getItems().get(getIndex());
 							Screen.telaDeEditarPizza();
 						});
 					}
-					
+
 					@Override
 					public void updateItem(Void item, boolean empty) {
-						if(empty) {
+						if (empty) {
 							setGraphic(null);
-						}
-						else {
+						} else {
 							setGraphic(btn);
 						}
 					}
 				};
-				
+
 				return cell;
 			}
 		};
-		
+
 		edit.setCellFactory(cellFactory);
 		tablePizza.getColumns().add(edit);
 	}
-	
-	
+
 	public void voltar() {
 		Screen.telaDeHome();
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		listStorage();	
+		listStorage();
 	}
 }
