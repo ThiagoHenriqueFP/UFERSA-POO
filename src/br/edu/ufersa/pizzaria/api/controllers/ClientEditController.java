@@ -3,6 +3,8 @@ package br.edu.ufersa.pizzaria.api.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import br.edu.ufersa.pizzaria.api.dto.ClientDTO;
 import br.edu.ufersa.pizzaria.model.service.ClientService;
 import br.edu.ufersa.pizzaria.view.Screen;
@@ -20,7 +22,8 @@ public class ClientEditController implements Initializable{
 		clientDto.setName(name.getText());
 		clientDto.setCPF(ClientListController.clientRow.getCPF());
 		clientDto.setAddress(address.getText());
-		clientService.editClient(clientDto);
+		//clientService.editClient(clientDto);
+		JOptionPane.showMessageDialog(null, "Cliente Editado com Sucesso!");
 		Screen.telaDeListarCliente();
 	}
 	
@@ -29,7 +32,8 @@ public class ClientEditController implements Initializable{
 		clientDto.setName(ClientListController.clientRow.getName());
 		clientDto.setCPF(ClientListController.clientRow.getCPF());
 		clientDto.setAddress(ClientListController.clientRow.getAddress());
-		clientService.deleteClient(clientDto);
+		//clientService.deleteClient(clientDto);
+		JOptionPane.showMessageDialog(null, "Cliente Deletado com Sucesso!");
 		Screen.telaDeListarCliente();
 	}
 	

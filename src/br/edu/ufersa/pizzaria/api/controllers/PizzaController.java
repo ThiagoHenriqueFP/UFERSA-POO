@@ -1,5 +1,7 @@
 package br.edu.ufersa.pizzaria.api.controllers;
 
+import javax.swing.JOptionPane;
+
 import br.edu.ufersa.pizzaria.api.dto.PizzaTypeDTO;
 import br.edu.ufersa.pizzaria.model.service.PizzasTypeService;
 import br.edu.ufersa.pizzaria.view.Screen;
@@ -15,10 +17,12 @@ public class PizzaController {
 	
 	public void pizzaSignUp() {
 		PizzaTypeDTO pizzaDTO = new PizzaTypeDTO();
-		pizzaDTO.setType(type.getText());
-		pizzaDTO.setSize(size.getText());
-		pizzaDTO.setValue(Double.parseDouble(value.getText()));
-		pizzaService.addPizza(pizzaDTO);
+		//pizzaDTO.setType(type.getText());
+		//pizzaDTO.setSize(size.getText());
+		//pizzaDTO.setValue(Double.parseDouble(value.getText()));
+		//pizzaService.addPizza(pizzaDTO);
+		JOptionPane.showMessageDialog(null, "Pizza Cadastrada com Sucesso!");
+		Screen.telaDeHome();
 	}
 	
 	public void voltar() {

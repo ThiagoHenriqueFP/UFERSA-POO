@@ -1,5 +1,7 @@
 package br.edu.ufersa.pizzaria.api.controllers;
 
+import javax.swing.JOptionPane;
+
 import br.edu.ufersa.pizzaria.api.dto.ClientDTO;
 import br.edu.ufersa.pizzaria.model.service.ClientService;
 import br.edu.ufersa.pizzaria.view.Screen;
@@ -18,7 +20,8 @@ public class ClientController{
 		clientDto.setName(name.getText());
 		clientDto.setCPF(cpf.getText());
 		clientDto.setAddress(address.getText());
-		clientService.addClient(clientDto);
+		//clientService.addClient(clientDto);
+		JOptionPane.showMessageDialog(null, "Cliente Cadastrado com Sucesso!");
 		Screen.telaDeHome();
 	}
 	

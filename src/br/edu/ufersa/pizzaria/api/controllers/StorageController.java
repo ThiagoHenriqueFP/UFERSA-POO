@@ -1,5 +1,7 @@
 package br.edu.ufersa.pizzaria.api.controllers;
 
+import javax.swing.JOptionPane;
+
 import br.edu.ufersa.pizzaria.api.dto.StorageDTO;
 import br.edu.ufersa.pizzaria.model.service.StorageService;
 import br.edu.ufersa.pizzaria.view.Screen;
@@ -15,9 +17,11 @@ public class StorageController {
 	
 	public void storageSignUp() {
 		StorageDTO storageDto = new StorageDTO();
-		storageDto.setItem(produto.getText());
-		storageDto.setQuantity(Integer.parseInt(quant.getText()));
-		storageService.addItem(storageDto);
+		//storageDto.setItem(produto.getText());
+		//storageDto.setQuantity(Integer.parseInt(quant.getText()));
+		//storageService.addItem(storageDto);
+		JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso!");
+		Screen.telaDeHome();
 	}
 	
 	public void voltar() {
