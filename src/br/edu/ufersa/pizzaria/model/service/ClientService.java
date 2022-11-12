@@ -1,4 +1,4 @@
-package br.edu.ufersa.pizzaria.model.services;
+package br.edu.ufersa.pizzaria.model.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

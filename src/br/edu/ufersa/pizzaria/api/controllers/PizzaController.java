@@ -1,7 +1,7 @@
 package br.edu.ufersa.pizzaria.api.controllers;
 
 import br.edu.ufersa.pizzaria.api.dto.PizzaTypeDTO;
-import br.edu.ufersa.pizzaria.model.services.PizzasTypeService;
+import br.edu.ufersa.pizzaria.model.service.PizzasTypeService;
 import br.edu.ufersa.pizzaria.view.Screen;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
