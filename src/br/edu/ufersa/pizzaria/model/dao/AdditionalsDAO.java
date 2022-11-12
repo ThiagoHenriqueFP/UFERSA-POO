@@ -9,7 +9,7 @@ import br.edu.ufersa.pizzaria.model.entities.Additionals;
 public class AdditionalsDAO extends BaseDAO<Additionals>{
 	
 	public boolean addAdditional(Additionals a) {
-		String sql = "INSERT INTO /*TABLE NAME HERE*/ (name,value) VALUES (?,?);";
+		String sql = "INSERT INTO additionals (name,value) VALUES (?,?);";
 		
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
@@ -25,7 +25,7 @@ public class AdditionalsDAO extends BaseDAO<Additionals>{
 	}
 	
 	public boolean deleteAdditional(Additionals a) {
-		String sql = "DELETE FROM /*TABLE NAME HERE*/ WHERE id=?;";
+		String sql = "DELETE FROM additionals WHERE id=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setInt(1, a.getId());
@@ -39,7 +39,7 @@ public class AdditionalsDAO extends BaseDAO<Additionals>{
 	}
 	
 	public boolean editAdditional(Additionals a) {
-		String sql = "UPDATE /*TABLE NAME HERE*/ SET name=?,value=? WHERE id=? ";
+		String sql = "UPDATE additionals SET name=?,value=? WHERE id=? ";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, a.getName());
@@ -55,7 +55,7 @@ public class AdditionalsDAO extends BaseDAO<Additionals>{
 	}
 	
 	public Additionals findById(Additionals a) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE id=?;";
+		String sql = "SELECT * FROM additionals WHERE id=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setInt(1, a.getId());
@@ -76,7 +76,7 @@ public class AdditionalsDAO extends BaseDAO<Additionals>{
 	
 	@Override
 	public ResultSet getAll() {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/;";
+		String sql = "SELECT * FROM additionals;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
@@ -90,7 +90,7 @@ public class AdditionalsDAO extends BaseDAO<Additionals>{
 	
 	@Override
 	public ResultSet findBySpecifiedField(Additionals a, String field) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE " + field +"=?;";
+		String sql = "SELECT * FROM additionals WHERE " + field +"=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			switch (field) {

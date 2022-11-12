@@ -12,7 +12,7 @@ import br.edu.ufersa.pizzaria.model.entities.PizzasType;
 public class OrdersDAO extends BaseDAO<Orders>{
 	
 	public boolean addOrder(Orders o) {
-		String sql = "INSERT INTO /*TABLE NAME HERE*/ (client,pizza,additional,size,state) VALUES (?,?,?,?,?);";
+		String sql = "INSERT INTO order (client,pizza,additional,size,state) VALUES (?,?,?,?,?);";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setObject(1, o.getClient());
@@ -30,7 +30,7 @@ public class OrdersDAO extends BaseDAO<Orders>{
 	}
 	
 	public boolean deleteOrder(Orders o) {
-		String sql = "DELETE FROM /*TABLE NAME HERE*/ WHERE id=?;";
+		String sql = "DELETE FROM order WHERE id=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setInt(1, o.getId());
@@ -44,7 +44,7 @@ public class OrdersDAO extends BaseDAO<Orders>{
 	}
 	
 	public boolean editOrder(Orders o) {
-		String sql = "UPDATE /*TABLE NAME HERE*/ SET client=?,pizza=?,additional=?,size=?,state=? WHERE id=? ";
+		String sql = "UPDATE order SET client=?,pizza=?,additional=?,size=?,state=? WHERE id=? ";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setObject(1, o.getClient());
@@ -63,7 +63,7 @@ public class OrdersDAO extends BaseDAO<Orders>{
 	}
 	
 	public Orders findById(Orders o) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE id=?;";
+		String sql = "SELECT * FROM order WHERE id=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setInt(1, o.getId());
@@ -87,7 +87,7 @@ public class OrdersDAO extends BaseDAO<Orders>{
 	
 	@Override
 	public ResultSet getAll() {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/;";
+		String sql = "SELECT * FROM order;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
@@ -101,7 +101,7 @@ public class OrdersDAO extends BaseDAO<Orders>{
 	
 	@Override
 	public ResultSet findBySpecifiedField(Orders o, String field) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE " + field +"=?;";
+		String sql = "SELECT * FROM order WHERE " + field +"=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			switch (field) {

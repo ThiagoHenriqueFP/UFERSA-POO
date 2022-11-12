@@ -8,8 +8,9 @@ import br.edu.ufersa.pizzaria.model.entities.Storage;
 
 public class StorageDAO extends BaseDAO<Storage>{
 	
-	public boolean addItem(Storage s) {
-		String sql = "INSERT INTO /*TABLE NAME HERE*/ (item,quantity) VALUES (?,?);";
+	@Override
+	public boolean add(Storage s) {
+		String sql = "INSERT INTO storage (name,amount) VALUES (?,?);";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, s.getItem());
@@ -23,8 +24,9 @@ public class StorageDAO extends BaseDAO<Storage>{
 		}
 	}
 	
-	public boolean deleteItem(Storage s) {
-		String sql = "DELETE FROM /*TABLE NAME HERE*/ WHERE item=?;";
+	@Override
+	public boolean delete(Storage s) {
+		String sql = "DELETE FROM storage WHERE item=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, s.getItem());
@@ -37,8 +39,9 @@ public class StorageDAO extends BaseDAO<Storage>{
 		}
 	}
 	
-	public boolean editItem(Storage s) {
-		String sql = "UPDATE /*TABLE NAME HERE*/ SET type=?,quantity=? WHERE type=? ";
+	@Override
+	public boolean edit(Storage s) {
+		String sql = "UPDATE storage SET type=?,quantity=? WHERE type=? ";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, s.getItem());
@@ -53,7 +56,7 @@ public class StorageDAO extends BaseDAO<Storage>{
 	}
 	
 	public Storage findByItem(Storage s) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE item=?;";
+		String sql = "SELECT * FROM storage WHERE item=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, s.getItem());
@@ -74,7 +77,7 @@ public class StorageDAO extends BaseDAO<Storage>{
 	
 	@Override
 	public ResultSet getAll() {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/;";
+		String sql = "SELECT * FROM storage;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
@@ -88,7 +91,7 @@ public class StorageDAO extends BaseDAO<Storage>{
 	
 	@Override
 	public ResultSet findBySpecifiedField(Storage s, String field) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE " + field +"=?;";
+		String sql = "SELECT * FROM storage WHERE " + field +"=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			switch (field) {

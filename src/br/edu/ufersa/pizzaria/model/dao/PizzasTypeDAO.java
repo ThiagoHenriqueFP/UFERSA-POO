@@ -8,8 +8,9 @@ import br.edu.ufersa.pizzaria.model.entities.PizzasType;
 
 public class PizzasTypeDAO extends BaseDAO<PizzasType> {
 	
-	public boolean addPizza(PizzasType p) {
-		String sql = "INSERT INTO /*TABLE NAME HERE*/  (type,value) VALUES (?,?);";
+	@Override
+	public boolean add(PizzasType p) {
+		String sql = "INSERT INTO pizza (name,value) VALUES (?,?);";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, p.getType());
@@ -23,8 +24,9 @@ public class PizzasTypeDAO extends BaseDAO<PizzasType> {
 		}
 	}
 	
-	public boolean deletePizza(PizzasType p) {
-		String sql = "DELETE FROM /*TABLE NAME HERE*/ WHERE type=?;";
+	@Override
+	public boolean delete(PizzasType p) {
+		String sql = "DELETE FROM pizza WHERE type=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, p.getType());
@@ -37,8 +39,9 @@ public class PizzasTypeDAO extends BaseDAO<PizzasType> {
 		}
 	}
 	
-	public boolean editPizza(PizzasType p) {
-		String sql = "UPDATE *TABLE NAME HERE*/ SET value=? WHERE type=? ";
+	@Override
+	public boolean edit(PizzasType p) {
+		String sql = "UPDATE pizza SET value=? WHERE type=? ";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, p.getType());
@@ -53,7 +56,7 @@ public class PizzasTypeDAO extends BaseDAO<PizzasType> {
 	}
 	
 	public PizzasType findByType(PizzasType p) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE type=?;";
+		String sql = "SELECT * FROM pizza WHERE name=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, p.getType());
@@ -74,7 +77,7 @@ public class PizzasTypeDAO extends BaseDAO<PizzasType> {
 	
 	@Override
 	public ResultSet getAll() {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/;";
+		String sql = "SELECT * FROM pizza;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			ResultSet rs = pst.executeQuery();
@@ -88,7 +91,7 @@ public class PizzasTypeDAO extends BaseDAO<PizzasType> {
 	
 	@Override
 	public ResultSet findBySpecifiedField(PizzasType p, String field) {
-		String sql = "SELECT * FROM /*TABLE NAME HERE*/ WHERE " + field +"=?;";
+		String sql = "SELECT * FROM pizza WHERE " + field +"=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			switch (field) {
