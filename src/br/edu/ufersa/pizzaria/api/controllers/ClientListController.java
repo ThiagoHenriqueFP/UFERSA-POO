@@ -1,6 +1,7 @@
 package br.edu.ufersa.pizzaria.api.controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -32,7 +33,13 @@ public class ClientListController implements Initializable{
 	private ClientService clientService = new ClientService();
 	
 	public void listAllClients() {
-		clientList = clientService.getAllClients();
+		//clientList = clientService.getAllClients();
+		clientList = new ArrayList<ClientDTO>();
+		ClientDTO c1 = new ClientDTO();
+		c1.setName("Armando Pinto Aquino Rego");
+		c1.setCPF("123.456.789-10");
+		c1.setAddress("Rua José Pinto, Presidente Dutra, 265");
+		clientList.add(c1);
 		obsList = FXCollections.observableArrayList(clientList);
 		
 		nameList.setCellValueFactory(new PropertyValueFactory<ClientDTO,String>("name"));

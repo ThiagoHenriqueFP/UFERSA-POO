@@ -12,34 +12,33 @@
    <children>
       <ImageView fitHeight="768.0" fitWidth="1388.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/background.jpg" />
+            <Image url="@../../Pizzaria/res/image/background.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="64.0" fitWidth="61.0" layoutX="25.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/arrowbackbutton_79955%201.png" />
+            <Image url="@../../Pizzaria/res/image/arrowbackbutton_79955%201.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="8.0" fitWidth="304.0" layoutX="531.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/Rectangle%2030.png" />
+            <Image url="@../../Pizzaria/res/image/Rectangle%2030.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="46.0" fitWidth="168.0" layoutX="599.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@image/ESTOQUE%20(1).png" />
+            <Image url="@../../Pizzaria/res/image/ESTOQUE%20(1).png" />
          </image>
       </ImageView>
       <Button layoutX="34.0" layoutY="33.0" mnemonicParsing="false" onAction="#voltar" opacity="0.0" prefHeight="46.0" prefWidth="43.0" text="Button">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <TableView layoutX="157.0" layoutY="95.0" prefHeight="597.0" prefWidth="1120.0">
+      <TableView fx:id="tabelaEstoque" layoutX="157.0" layoutY="95.0" prefHeight="597.0" prefWidth="1120.0">
         <columns>
           <TableColumn fx:id="produto" prefWidth="75.0" text="Produto" />
           <TableColumn fx:id="qnt" prefWidth="75.0" text="Qnt/Kg" />
             <TableColumn fx:id="code" prefWidth="75.0" text="Codigo" />
-            <TableColumn fx:id="edit" prefWidth="75.0" text="Editar" />
         </columns>
       </TableView>
    </children>

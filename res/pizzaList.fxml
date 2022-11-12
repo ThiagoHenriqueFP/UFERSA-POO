@@ -34,7 +34,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <TableView fx:id="tableClient" layoutX="157.0" layoutY="95.0" prefHeight="597.0" prefWidth="1120.0">
+      <TableView fx:id="tablePizza" layoutX="157.0" layoutY="95.0" prefHeight="597.0" prefWidth="1120.0">
         <columns>
           <TableColumn fx:id="typeList" minWidth="200.0" prefWidth="75.0" text="Sabor" />
           <TableColumn fx:id="sizeList" minWidth="120.0" prefWidth="75.0" text="Tamanho" />

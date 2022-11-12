@@ -39,7 +39,7 @@ public class PizzaListController implements Initializable {
 	private PizzasTypeService pizzaService = new PizzasTypeService();
 
 	public void listStorage() {
-		// storageList = storageService.getAllItens();
+		// pizzaList = pizzaService.getAllItens();
 		pizzaList = new ArrayList<PizzaTypeDTO>();
 		PizzaTypeDTO dto = new PizzaTypeDTO();
 		dto.setType("Cala a boca");
