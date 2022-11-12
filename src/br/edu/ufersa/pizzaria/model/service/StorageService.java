@@ -1,11 +1,9 @@
-package br.edu.ufersa.pizzaria.model.services;
+package br.edu.ufersa.pizzaria.model.service;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.JOptionPane;
 
 import br.edu.ufersa.pizzaria.api.dto.StorageDTO;
 import br.edu.ufersa.pizzaria.model.dao.BaseInterDAO;
@@ -16,13 +14,11 @@ public class StorageService {
 	
 	BaseInterDAO<Storage> dao = new StorageDAO();
 	
-	public boolean addItem(StorageDTO s) {
-		Storage st = Storage.convertDTO(s);
-		ResultSet rs = dao.findBySpecifiedField(st, "name");
+	public boolean addItem(Storage s) {
+		ResultSet rs = dao.findBySpecifiedField(s, "item");
 		try {
 			if(rs == null || !rs.next()) {
-				if(dao.add(st) == true) {
-					JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso!");
+				if(dao.add(s) == true) {
 					return true;
 				}
 				else return false;
@@ -54,12 +50,11 @@ public class StorageService {
 		}
 	}
 	
-	public boolean editItem(StorageDTO s) {
-		Storage st = Storage.convertDTO(s);
-		ResultSet rs = dao.findBySpecifiedField(st, "item");
+	public boolean editItem(Storage s) {
+		ResultSet rs = dao.findBySpecifiedField(s, "item");
 		try {
 			if(rs!=null && rs.next()) {
-				if(dao.edit(st) == true) {
+				if(dao.edit(s) == true) {
 					return true;
 				}
 				else return false;
@@ -72,12 +67,11 @@ public class StorageService {
 		}
 	}
 	
-	public boolean deleteItem(StorageDTO s) {
-		Storage st = Storage.convertDTO(s);
-		ResultSet rs = dao.findBySpecifiedField(st, "item");
+	public boolean deleteItem(Storage s) {
+		ResultSet rs = dao.findBySpecifiedField(s, "item");
 		try {
 			if(rs!=null && rs.next()) {
-				if(dao.delete(st) == true) {
+				if(dao.delete(s) == true) {
 					return true;
 				}
 				else return false;

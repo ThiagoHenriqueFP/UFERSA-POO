@@ -10,7 +10,7 @@ public class PizzasTypeDAO extends BaseDAO<PizzasType> {
 	
 	@Override
 	public boolean add(PizzasType p) {
-		String sql = "INSERT INTO pizza  (name,value) VALUES (?,?);";
+		String sql = "INSERT INTO pizza (name,value) VALUES (?,?);";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, p.getType());
@@ -26,7 +26,7 @@ public class PizzasTypeDAO extends BaseDAO<PizzasType> {
 	
 	@Override
 	public boolean delete(PizzasType p) {
-		String sql = "DELETE FROM /*TABLE NAME HERE*/ WHERE type=?;";
+		String sql = "DELETE FROM pizza WHERE type=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, p.getType());
@@ -41,7 +41,7 @@ public class PizzasTypeDAO extends BaseDAO<PizzasType> {
 	
 	@Override
 	public boolean edit(PizzasType p) {
-		String sql = "UPDATE *TABLE NAME HERE*/ SET value=? WHERE type=? ";
+		String sql = "UPDATE pizza SET value=? WHERE type=? ";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, p.getType());

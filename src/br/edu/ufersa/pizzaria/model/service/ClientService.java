@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import br.edu.ufersa.pizzaria.api.dto.ClientDTO;
 import br.edu.ufersa.pizzaria.model.dao.BaseInterDAO;
 import br.edu.ufersa.pizzaria.model.dao.ClientDAO;
@@ -14,11 +16,12 @@ public class ClientService {
 	BaseInterDAO<Client> dao = new ClientDAO();
 	
 	public boolean addClient(ClientDTO c) {
-		Client client = Client.convert(c);
-		ResultSet rs = dao.findBySpecifiedField(client, "id");
+		Client cc = Client.convertDTO(c);
+		ResultSet rs = dao.findBySpecifiedField(cc, "id");
 		try {
 			if(rs == null || !rs.next()) {
-				if(dao.add(client) == true) {
+				if(dao.add(cc) == true) {
+					JOptionPane.showMessageDialog(null, "Cliente Adicionado com Sucesso!");
 					return true;
 				}
 				else return false;
@@ -51,11 +54,12 @@ public class ClientService {
 		}
 	}
 	
-	public boolean editClient(Client c) {
-		ResultSet rs = dao.findBySpecifiedField(c, "cpf");
+	public boolean editClient(ClientDTO c) {
+		Client cc = Client.convertDTO(c);
+		ResultSet rs = dao.findBySpecifiedField(cc, "cpf");
 		try {
 			if(rs!=null && rs.next()) {
-				if(dao.edit(c) == true) {
+				if(dao.edit(cc) == true) {
 					return true;
 				}
 				else return false;
@@ -68,11 +72,12 @@ public class ClientService {
 		}
 	}
 	
-	public boolean deleteClient(Client c) {
-		ResultSet rs = dao.findBySpecifiedField(c, "cpf");
+	public boolean deleteClient(ClientDTO c) {
+		Client cc = Client.convertDTO(c);
+		ResultSet rs = dao.findBySpecifiedField(cc, "cpf");
 		try {
 			if(rs!=null && rs.next()) {
-				if(dao.delete(c) == true) {
+				if(dao.delete(cc) == true) {
 					return true;
 				}
 				else return false;

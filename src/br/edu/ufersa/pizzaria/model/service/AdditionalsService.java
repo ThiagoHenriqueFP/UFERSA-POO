@@ -9,16 +9,15 @@ import br.edu.ufersa.pizzaria.model.dao.AdditionalsDAO;
 import br.edu.ufersa.pizzaria.model.dao.BaseInterDAO;
 import br.edu.ufersa.pizzaria.model.entities.Additionals;
 
-
 public class AdditionalsService {
 
 	BaseInterDAO<Additionals> dao = new AdditionalsDAO();
-	
-	public boolean addAdditionals(Additionals c) {
-		ResultSet rs = dao.findBySpecifiedField(c, "id");
+
+	public boolean addAdditional(Additionals a) {
+		ResultSet rs = dao.findBySpecifiedField(a, "id");
 		try {
 			if(rs == null || !rs.next()) {
-				if(dao.add(c) == true) {
+				if(dao.add(a) == true) {
 					return true;
 				}
 				else return false;
@@ -30,32 +29,31 @@ public class AdditionalsService {
 			return false;
 		}
 	}
-	
-	public List<Additionals> getAllAdditionals() {
-		List<Additionals> additionals = new ArrayList<Additionals>();
+
+	public List<Additionals> getAllAdditionals(){
+		List<Additionals> additis = new ArrayList<Additionals>();
 		ResultSet rs = dao.getAll();
 		try {
 			while(rs.next()) {
-				Additionals additional = new Additionals();
-				additional.setName(rs.getString("name"));
-				additional.setValue(rs.getDouble("value"));
-				additional.setId(rs.getInt("id"));
-				
-				additionals.add(additional);
+				Additionals a = new Additionals();
+				a.setName(rs.getString("name"));
+				a.setValue(rs.getDouble("value"));
+
+				additis.add(a);
 			}
-			return additionals;
+			return additis;
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
-	public boolean editClient(Additionals c) {
-		ResultSet rs = dao.findBySpecifiedField(c, "name");
+
+	public boolean editAdditional(Additionals a) {
+		ResultSet rs = dao.findBySpecifiedField(a, "id");
 		try {
 			if(rs!=null && rs.next()) {
-				if(dao.edit(c) == true) {
+				if(dao.edit(a) == true) {
 					return true;
 				}
 				else return false;
@@ -67,12 +65,12 @@ public class AdditionalsService {
 			return false;
 		}
 	}
-	
-	public boolean deleteClient(Additionals c) {
-		ResultSet rs = dao.findBySpecifiedField(c, "name");
+
+	public boolean deleteAdditional(Additionals a) {
+		ResultSet rs = dao.findBySpecifiedField(a, "id");
 		try {
 			if(rs!=null && rs.next()) {
-				if(dao.delete(c) == true) {
+				if(dao.delete(a) == true) {
 					return true;
 				}
 				else return false;

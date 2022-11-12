@@ -4,7 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import br.edu.ufersa.pizzaria.api.dto.ClientDTO;
-import br.edu.ufersa.pizzaria.model.services.ClientService;
+import br.edu.ufersa.pizzaria.model.service.ClientService;
 import br.edu.ufersa.pizzaria.view.Screen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

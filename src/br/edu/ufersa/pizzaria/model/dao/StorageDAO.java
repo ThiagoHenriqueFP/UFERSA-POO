@@ -26,7 +26,7 @@ public class StorageDAO extends BaseDAO<Storage>{
 	
 	@Override
 	public boolean delete(Storage s) {
-		String sql = "DELETE FROM /*TABLE NAME HERE*/ WHERE item=?;";
+		String sql = "DELETE FROM storage WHERE item=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, s.getItem());
@@ -41,7 +41,7 @@ public class StorageDAO extends BaseDAO<Storage>{
 	
 	@Override
 	public boolean edit(Storage s) {
-		String sql = "UPDATE /*TABLE NAME HERE*/ SET type=?,quantity=? WHERE type=? ";
+		String sql = "UPDATE storage SET type=?,quantity=? WHERE type=? ";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, s.getItem());
