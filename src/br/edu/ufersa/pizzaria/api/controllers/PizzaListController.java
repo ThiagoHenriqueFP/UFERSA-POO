@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package br.edu.ufersa.pizzaria.api.controllers;
 
 import java.net.URL;
@@ -98,14 +97,3 @@ public class PizzaListController implements Initializable{
 		listStorage();	
 	}
 }
-=======
-package br.edu.ufersa.pizzaria.api.controllers;
-
-import br.edu.ufersa.pizzaria.view.Screen;
-
-public class PizzaListController {
-	public void voltar() {
-		Screen.telaDeHome();
-	}
-}
->>>>>>> vinicius
