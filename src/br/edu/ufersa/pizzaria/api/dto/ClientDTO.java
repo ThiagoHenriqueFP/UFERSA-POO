@@ -26,7 +26,7 @@ public class ClientDTO {
 			if (name!="")
 				this.name = name;
 		} else {			
-			this.name = "Franchesco";
+			this.name = null;
 		}
 	}
 	

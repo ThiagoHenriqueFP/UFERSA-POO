@@ -43,24 +43,24 @@
             <Image url="@image/pizza_food_fast_food_italian_food_icon_207930%201.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="36.0" fitWidth="156.0" layoutX="616.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+      <Line endX="182.0" layoutX="663.0" layoutY="56.0" startX="-120.0" stroke="RED" style="-fx-opacity: 50%;" />
+      <ImageView fitHeight="36.0" fitWidth="156.0" layoutX="617.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@image/EDITAR.png" />
          </image>
       </ImageView>
-      <Line endX="182.0" layoutX="663.0" layoutY="56.0" startX="-120.0" stroke="RED" style="-fx-opacity: 50%;" />
-      <Text fill="WHITE" layoutX="625.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TAMANHO">
+      <Text fill="WHITE" layoutX="633.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TAMANHO">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <TextField fx:id="tamPizza" layoutX="494.0" layoutY="226.0" prefHeight="30.0" prefWidth="400.0" style="-fx-background-color: #EBE1E1;" />
-      <Text fill="WHITE" layoutX="655.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VALOR">
+      <TextField fx:id="tamPizza" layoutX="495.0" layoutY="234.0" prefHeight="30.0" prefWidth="400.0" style="-fx-background-color: #EBE1E1;" />
+      <Text fill="WHITE" layoutX="656.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="VALOR">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <TextField fx:id="valPizza" layoutX="494.0" layoutY="312.0" prefHeight="30.0" prefWidth="400.0" style="-fx-background-color: #EBE1E1;" />
+      <TextField fx:id="valPizza" layoutX="495.0" layoutY="333.0" prefHeight="30.0" prefWidth="400.0" style="-fx-background-color: #EBE1E1;" />
       <Button layoutX="15.0" layoutY="11.0" mnemonicParsing="false" onAction="#voltar" prefHeight="58.0" prefWidth="58.0" style="-fx-background-radius: 50px; -fx-background-color: none;" />
       <Button layoutX="592.0" layoutY="529.0" mnemonicParsing="false" onAction="#editPizza" prefHeight="58.0" prefWidth="206.0" style="-fx-background-color: none;" />
       <Button layoutX="592.0" layoutY="605.0" mnemonicParsing="false" onAction="#delPizza" prefHeight="58.0" prefWidth="206.0" style="-fx-background-color: none;" />
