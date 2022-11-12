@@ -98,6 +98,19 @@ public class Screen extends Application{
 		}
 	}
 	
+	public static void telaDeEditarPedido() {
+		try {
+			FXMLLoader loader = new FXMLLoader(Screen.class.getResource("/editRequest.fxml"));
+			Pane clientSignUpScreen = loader.load();
+			Scene scene = new Scene(clientSignUpScreen);
+			stage.setScene(scene);
+			stage.show();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void telaDeCadastroPizza() {
 		try {
 			FXMLLoader loader = new FXMLLoader(Screen.class.getResource("/pizzaSignUp.fxml"));

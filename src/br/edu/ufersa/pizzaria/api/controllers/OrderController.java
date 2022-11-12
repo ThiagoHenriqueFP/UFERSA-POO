@@ -8,6 +8,7 @@ public class OrderController {
 	
 	public void orderSignUp() {
 		JOptionPane.showMessageDialog(null, "Pedido Cadastrado com Sucesso!");
+		voltar();
 	}
 	
 	public void voltar() {

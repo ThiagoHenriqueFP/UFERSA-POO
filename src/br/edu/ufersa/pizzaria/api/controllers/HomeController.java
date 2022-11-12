@@ -14,10 +14,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
 
 public class HomeController implements Initializable{
 	@FXML private ChoiceBox<String> client;
@@ -31,7 +34,9 @@ public class HomeController implements Initializable{
 	@FXML private TableColumn<OrderDTO,String> pizzaType;
 	@FXML private TableColumn<OrderDTO,String> additionalName;
 	@FXML private TableColumn<OrderDTO,String> state;
-	//@FXML private TableColumn<OrderDTO,String> edit;
+	@FXML private TableColumn<OrderDTO,Void> edit = new TableColumn<OrderDTO, Void>("Editar");
+	
+	protected static OrderDTO orderRow;
 	
 	private List<OrderDTO> orderList = new ArrayList<OrderDTO>();
 	
@@ -41,6 +46,7 @@ public class HomeController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		dropDownMenu();
 		initializeTableView();
+		addBtnToColumn();
 	}
 	
 	@FXML public void orderSignUp() {
@@ -84,6 +90,43 @@ public class HomeController implements Initializable{
 		pizza.getItems().addAll(options);
 		pizza.setOnAction(this::getSelectedOptionPizza);
 	}
+	
+	public void addBtnToColumn() {
+		Callback<TableColumn<OrderDTO, Void>, TableCell<OrderDTO, Void>> cellFactory = new Callback<TableColumn<OrderDTO, Void>, TableCell<OrderDTO, Void>>(){
+
+			@Override
+			public TableCell<OrderDTO, Void> call(TableColumn<OrderDTO, Void> arg0) {
+				
+				final TableCell<OrderDTO,Void> cell = new TableCell<OrderDTO,Void>(){
+					
+					private final Button btn = new Button("Edit");
+					
+					{
+						btn.setOnAction((ActionEvent event) -> {
+							orderRow = getTableView().getItems().get(getIndex());
+							Screen.telaDeEditarPedido();
+						});
+					}
+					
+					@Override
+					public void updateItem(Void item, boolean empty) {
+						if(empty) {
+							setGraphic(null);
+						}
+						else {
+							setGraphic(btn);
+						}
+					}
+				};
+				
+				return cell;
+			}
+		};
+		
+		edit.setCellFactory(cellFactory);
+		orderTable.getColumns().add(edit);
+	}
+
 	
 	public void initializeTableView() {
 		clientName.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("clientName"));
