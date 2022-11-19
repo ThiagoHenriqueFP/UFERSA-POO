@@ -1,30 +1,46 @@
 package br.edu.ufersa.pizzaria.api.controllers;
 
+
+import br.edu.ufersa.pizzaria.api.dto.OrderDTO;
+import br.edu.ufersa.pizzaria.model.service.OrdersService;
 import br.edu.ufersa.pizzaria.view.Screen;
-import javax.swing.JOptionPane;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 public class OrderEditController {
+	
+	private OrderDTO orderDto = HomeController.orderRow;
+	private OrdersService orderService = new OrdersService();
+	
 	public void goBack() {
 		Screen.telaDeHome();
 	}
 	
-	public void onClick() {
-		JOptionPane.showMessageDialog(null, "Pedido Realizado");
+	@FXML
+	public void onProduction(ActionEvent event) {
+		orderDto.setState("Preparando");
+		orderService.editOrder(orderDto);
+		goBack();
 	}
 	
-	public void onProduction() {
-		JOptionPane.showMessageDialog(null, "Pedido em produção");
+	@FXML
+	public void onTransit(ActionEvent event) {
+		orderDto.setState("Saiu para Entrega");
+		orderService.editOrder(orderDto);
+		goBack();
 	}
 	
-	public void onTransit() {
-		JOptionPane.showMessageDialog(null, "Pedido saiu para entrega");
+	@FXML
+	public void delivered(ActionEvent event) {
+		orderDto.setState("Entregue");
+		orderService.editOrder(orderDto);
+		goBack();
 	}
 	
-	public void delivered() {
-		JOptionPane.showMessageDialog(null, "Pedido entregue");
-	}
-	
-	public void canceled() {
-		JOptionPane.showMessageDialog(null, "Pedido cancelado");
+	@FXML
+	public void canceled(ActionEvent event) {
+		orderDto.setState("Cancelado");
+		orderService.editOrder(orderDto);
+		goBack();
 	}
 }

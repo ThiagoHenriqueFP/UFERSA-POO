@@ -10,11 +10,12 @@ public class StorageDAO extends BaseDAO<Storage>{
 	
 	@Override
 	public boolean add(Storage s) {
-		String sql = "INSERT INTO storage (name,amount) VALUES (?,?);";
+		String sql = "INSERT INTO storage (name,amount,value) VALUES (?,?,?);";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, s.getItem());
 			pst.setInt(2, s.getQuantity());
+			pst.setDouble(3, s.getValue());
 			pst.execute();
 			return true;
 		}
@@ -26,10 +27,10 @@ public class StorageDAO extends BaseDAO<Storage>{
 	
 	@Override
 	public boolean delete(Storage s) {
-		String sql = "DELETE FROM storage WHERE item=?;";
+		String sql = "DELETE FROM storage WHERE id=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
-			pst.setString(1, s.getItem());
+			pst.setInt(1, s.getId());
 			pst.execute();
 			return true;
 		}
@@ -41,37 +42,19 @@ public class StorageDAO extends BaseDAO<Storage>{
 	
 	@Override
 	public boolean edit(Storage s) {
-		String sql = "UPDATE storage SET type=?,quantity=? WHERE type=? ";
+		String sql = "UPDATE storage SET name=?,amount=?,value=? WHERE id=? ";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, s.getItem());
 			pst.setInt(2, s.getQuantity());
+			pst.setDouble(3, s.getValue());
+			pst.setInt(4, s.getId());
 			pst.executeUpdate();
 			return true;
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
 			return false;
-		}
-	}
-	
-	public Storage findByItem(Storage s) {
-		String sql = "SELECT * FROM storage WHERE item=?;";
-		try {
-			PreparedStatement pst = getConnection().prepareStatement(sql);
-			pst.setString(1, s.getItem());
-			ResultSet rs = pst.executeQuery();
-			if(rs.next()) {
-				Storage ss = new Storage();
-				ss.setItem(rs.getString("item"));
-				ss.setQuantity(rs.getInt("quantity"));
-				return ss;
-			}
-			else return null;
-		
-		} catch (SQLException ex) {
-			ex.printStackTrace();
-			return null;
 		}
 	}
 	
@@ -98,9 +81,13 @@ public class StorageDAO extends BaseDAO<Storage>{
 			case "quantity":
 				pst.setInt(1, s.getQuantity());
 				break;
-			
-			default: 
+			case "name":
 				pst.setString(1, s.getItem());
+				break;
+			case "value":
+				pst.setDouble(1, s.getValue());
+			default: 
+				pst.setInt(1, s.getId());
 			}
 			
 			ResultSet rs = pst.executeQuery();

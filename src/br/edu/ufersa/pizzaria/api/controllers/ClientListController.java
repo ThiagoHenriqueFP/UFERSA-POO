@@ -1,7 +1,6 @@
 package br.edu.ufersa.pizzaria.api.controllers;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -10,6 +9,8 @@ import br.edu.ufersa.pizzaria.model.service.ClientService;
 import br.edu.ufersa.pizzaria.view.Screen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,10 +18,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
 public class ClientListController implements Initializable{
+	@FXML private TextField searchBar;
 	@FXML private TableView<ClientDTO> tableClient;
 	@FXML private TableColumn<ClientDTO,String> nameList;
 	@FXML private TableColumn<ClientDTO,String> cpfList;
@@ -33,20 +36,14 @@ public class ClientListController implements Initializable{
 	private ClientService clientService = new ClientService();
 	
 	public void listAllClients() {
-		//clientList = clientService.getAllClients();
-		clientList = new ArrayList<ClientDTO>();
-		ClientDTO c1 = new ClientDTO();
-		c1.setName("Armando Pinto Aquino Rego");
-		c1.setCPF("123.456.789-10");
-		c1.setAddress("Rua José Pinto, Presidente Dutra, 265");
-		clientList.add(c1);
+		clientList = clientService.getAllClients();
 		obsList = FXCollections.observableArrayList(clientList);
 		
 		nameList.setCellValueFactory(new PropertyValueFactory<ClientDTO,String>("name"));
 		cpfList.setCellValueFactory(new PropertyValueFactory<ClientDTO,String>("CPF"));
 		addressList.setCellValueFactory(new PropertyValueFactory<ClientDTO,String>("address"));
 		
-		tableClient.setItems(obsList);
+		tableClient.setItems(search(obsList));
 		addBtnToColumn();
 	}
 	
@@ -84,6 +81,34 @@ public class ClientListController implements Initializable{
 		
 		editList.setCellFactory(cellFactory);
 		tableClient.getColumns().add(editList);
+	}
+	
+	public SortedList<ClientDTO> search(ObservableList<ClientDTO> obsList) {
+		FilteredList<ClientDTO> filteredData = new FilteredList<>(obsList, b -> true);
+		searchBar.textProperty().addListener((observable,oldValue,newValue)->{
+			filteredData.setPredicate(client -> {
+				if(newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if(client.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				}
+				else if(client.getCPF().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				}
+				else {
+					return false;
+				}
+				
+			});
+		});
+		
+		SortedList<ClientDTO> sortedData = new SortedList<>(filteredData);
+		sortedData.comparatorProperty().bind(tableClient.comparatorProperty());
+		return sortedData;
 	}
 	
 	public void voltar() {

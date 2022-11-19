@@ -2,7 +2,7 @@ package br.edu.ufersa.pizzaria.api.dto;
 
 public class ClientDTO {
 	private String name;
-	private String cpf; //CHAVE
+	private String cpf;
 	private String address;
 	
 	public String getName() {

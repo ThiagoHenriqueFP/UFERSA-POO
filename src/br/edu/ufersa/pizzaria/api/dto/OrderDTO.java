@@ -6,33 +6,75 @@ public class OrderDTO {
 	private String additionalName;
 	private String size;
 	private String state;
-	private String edit;
+	private String date;
+	private double price;
 	
-	public OrderDTO(String name,String pizza,String addi,String size,String state,String edit) {
+	public OrderDTO() {
+		
+	}
+	
+	public OrderDTO(String name,String pizza,String addi,String size,String state, String date, double price) {
 		this.setClientName(name);
 		this.setPizzaType(pizza);
 		this.setAddiName(addi);
 		this.setSize(size);
 		this.setState(state);
+		this.setDate(date);
+		this.setPrice(price);
 	}
 	
 	public void setClientName(String name) {
-		this.clientName = name;
+		if(name!=null) {
+			this.clientName = name;
+		}
+		else {
+			this.clientName = name;
+		}
 	}
 	public void setPizzaType(String pizza) {
-		this.pizzaType = pizza;
+		if(pizza!=null) {
+			this.pizzaType = pizza;
+		}
+		else {
+			this.pizzaType = pizza;
+		}
 	}
 	public void setAddiName(String addi) {
-		this.additionalName = addi;
+		if(addi!=null) {
+			this.additionalName = addi;
+		}
+		else {
+			this.additionalName = addi;
+		}
 	}
 	public void setSize(String size) {
-		this.size = size;
+		if(size!=null) {
+			this.size = size;
+		}
+		else {
+			this.size = size;
+		}
 	}
 	public void setState(String state) {
-		this.state = state;
+		if(state!=null) {
+			this.state = state;
+		}
+		else {
+			this.state = state;
+		}
 	}
-	public void setEdit(String edit) {
-		this.edit = edit;
+	public void setPrice(double price) {
+		if(price > 0.0) {
+			this.price = price;
+		}
+	}
+	public void setDate(String date) {
+		if(date!=null) {
+			this.date = date;
+		}
+		else {
+			this.date = null;
+		}
 	}
 	
 	public String getClientName() {
@@ -50,7 +92,10 @@ public class OrderDTO {
 	public String getState() {
 		return state;
 	}
-	public String getEdit() {
-		return edit;
+	public String getDate() {
+		return date;
+	}
+	public double getPrice() {
+		return price;
 	}
 }

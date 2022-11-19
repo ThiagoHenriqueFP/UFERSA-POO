@@ -4,7 +4,7 @@ public class StorageDTO {
 	//Atributos
     private String item; //CHAVE
     private int quantity;
-    private int id;
+    private double value;
 
     //Metodos Get e Set
     public void setItem(String item) {
@@ -23,6 +23,11 @@ public class StorageDTO {
             this.quantity = 0;
         }
     }
+    public void setValue(double v) {
+    	if(v>0) {
+    		this.value = v;
+    	}
+    }
 
     public String getItem() {
         return item;
@@ -31,15 +36,7 @@ public class StorageDTO {
         return quantity;
     }
     
-	public int getId() {
-		return id;
-	}
-	public void setId(int cod) {
-		  if(cod > 0){
-	            this.id = cod;
-	        }
-	        else{
-	            this.id = 0;
-	        }
+	public double getValue() {
+		return value;
 	}
 }

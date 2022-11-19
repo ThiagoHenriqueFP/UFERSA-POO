@@ -20,9 +20,10 @@ public class ClientController{
 		clientDto.setName(name.getText());
 		clientDto.setCPF(cpf.getText());
 		clientDto.setAddress(address.getText());
-		//clientService.addClient(clientDto);
-		JOptionPane.showMessageDialog(null, "Cliente Cadastrado com Sucesso!");
-		Screen.telaDeHome();
+		if(clientService.addClient(clientDto)) {
+			JOptionPane.showMessageDialog(null, "Cliente Cadastrado com Sucesso!");
+			Screen.telaDeHome();
+		}
 	}
 	
 	public void voltar() {

@@ -22,19 +22,19 @@ public class ClientEditController implements Initializable{
 		clientDto.setName(name.getText());
 		clientDto.setCPF(ClientListController.clientRow.getCPF());
 		clientDto.setAddress(address.getText());
-		//clientService.editClient(clientDto);
-		JOptionPane.showMessageDialog(null, "Cliente Editado com Sucesso!");
-		Screen.telaDeListarCliente();
+		if(clientService.editClient(clientDto)) {
+			JOptionPane.showMessageDialog(null, "Cliente Editado com Sucesso!");
+			Screen.telaDeListarCliente();
+		}
 	}
 	
 	public void deleteClient() {
 		ClientDTO clientDto = new ClientDTO();
-		clientDto.setName(ClientListController.clientRow.getName());
 		clientDto.setCPF(ClientListController.clientRow.getCPF());
-		clientDto.setAddress(ClientListController.clientRow.getAddress());
-		//clientService.deleteClient(clientDto);
-		JOptionPane.showMessageDialog(null, "Cliente Deletado com Sucesso!");
-		Screen.telaDeListarCliente();
+		if(clientService.deleteClient(clientDto)) {
+			JOptionPane.showMessageDialog(null, "Cliente Deletado com Sucesso!");
+			Screen.telaDeListarCliente();
+		}
 	}
 	
 	public void voltar() {

@@ -11,17 +11,19 @@ import javafx.scene.control.TextField;
 public class StorageController {
 	@FXML private TextField produto;
 	@FXML private TextField quant;
-	@FXML private TextField cod;
+	@FXML private TextField value;
 	
 	private StorageService storageService = new StorageService();
 	
 	public void storageSignUp() {
 		StorageDTO storageDto = new StorageDTO();
-		//storageDto.setItem(produto.getText());
-		//storageDto.setQuantity(Integer.parseInt(quant.getText()));
-		//storageService.addItem(storageDto);
-		JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso!");
-		Screen.telaDeHome();
+		storageDto.setItem(produto.getText().toLowerCase());
+		storageDto.setQuantity(Integer.parseInt(quant.getText()));
+		storageDto.setValue(Double.parseDouble(value.getText()));
+		if(storageService.addItem(storageDto)) {
+			JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso!");
+			Screen.telaDeHome();
+		}
 	}
 	
 	public void voltar() {

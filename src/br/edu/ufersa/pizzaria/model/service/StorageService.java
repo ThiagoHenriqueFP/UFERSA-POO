@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import br.edu.ufersa.pizzaria.api.dto.StorageDTO;
 import br.edu.ufersa.pizzaria.model.dao.BaseInterDAO;
 import br.edu.ufersa.pizzaria.model.dao.StorageDAO;
@@ -18,11 +16,10 @@ public class StorageService {
 	
 	public boolean addItem(StorageDTO s) {
 		Storage st = Storage.convertDTO(s);
-		ResultSet rs = dao.findBySpecifiedField(st, "name");
+		ResultSet rs = dao.findBySpecifiedField(st, "id");
 		try {
 			if(rs == null || !rs.next()) {
 				if(dao.add(st) == true) {
-					JOptionPane.showMessageDialog(null, "Produto Cadastrado com Sucesso!");
 					return true;
 				}
 				else return false;
@@ -35,15 +32,37 @@ public class StorageService {
 		}
 	}
 	
-	public List<Storage> getAllItens(){
+	public List<StorageDTO> getAllItens(){
+		List<StorageDTO> itens = new ArrayList<StorageDTO>();
+		ResultSet rs = dao.getAll();
+		try {
+			while(rs.next()) {
+				StorageDTO s = new StorageDTO();
+				s.setItem(rs.getString("name"));
+				s.setQuantity(rs.getInt("amount"));
+				s.setValue(rs.getDouble("value"));
+			
+				itens.add(s);
+			}
+			return itens;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Storage> getAllNoDTO(){
 		List<Storage> itens = new ArrayList<Storage>();
 		ResultSet rs = dao.getAll();
 		try {
 			while(rs.next()) {
 				Storage s = new Storage();
-				s.setItem(rs.getString("item"));
-				s.setQuantity(rs.getInt("quantity"));
-				
+				s.setItem(rs.getString("name"));
+				s.setQuantity(rs.getInt("amount"));
+				s.setValue(rs.getDouble("value"));
+				s.setId(rs.getInt("id"));
+			
 				itens.add(s);
 			}
 			return itens;
@@ -56,7 +75,7 @@ public class StorageService {
 	
 	public boolean editItem(StorageDTO s) {
 		Storage st = Storage.convertDTO(s);
-		ResultSet rs = dao.findBySpecifiedField(st, "item");
+		ResultSet rs = dao.findBySpecifiedField(st, "id");
 		try {
 			if(rs!=null && rs.next()) {
 				if(dao.edit(st) == true) {
@@ -74,7 +93,7 @@ public class StorageService {
 	
 	public boolean deleteItem(StorageDTO s) {
 		Storage st = Storage.convertDTO(s);
-		ResultSet rs = dao.findBySpecifiedField(st, "item");
+		ResultSet rs = dao.findBySpecifiedField(st, "id");
 		try {
 			if(rs!=null && rs.next()) {
 				if(dao.delete(st) == true) {
@@ -87,6 +106,39 @@ public class StorageService {
 		catch(SQLException e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+	
+	public int getBDId(Storage s) {
+		ResultSet rs = dao.findBySpecifiedField(s, "name");
+		try {
+			if(rs!=null && rs.next()) {
+				return rs.getInt("id");
+			}
+			else {
+				return 0;
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			return 0;
+		}
+	}
+	
+	public int getBDAmount(StorageDTO s) {
+		Storage st = Storage.convertDTO(s);
+		ResultSet rs = dao.findBySpecifiedField(st, "name");
+		try {
+			if(rs!=null && rs.next()) {
+				return rs.getInt("amount");
+			}
+			else {
+				return 0;
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+			return 0;
 		}
 	}
 }

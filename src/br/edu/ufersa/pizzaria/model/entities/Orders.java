@@ -1,14 +1,36 @@
 package br.edu.ufersa.pizzaria.model.entities;
 
+import br.edu.ufersa.pizzaria.api.dto.OrderDTO;
+import br.edu.ufersa.pizzaria.model.service.OrdersService;
+
 public class Orders {
     //Atributos
-    private Client client;
-    private PizzasType pizza;
-    private Additionals additional;
+    private String client;
+    private String pizza;
+    private String additional;
     private String size;
     private String state;
+    private String date;
+    private double price;
+    private int storageId;
     private int id;
-
+    
+    private static OrdersService orderService = new OrdersService();
+    
+    public static Orders convertDTO(OrderDTO o) {
+    	Orders oo = new Orders();
+    	oo.setSize(o.getSize());
+    	oo.setState(o.getState());
+    	oo.setPrice(o.getPrice());
+    	oo.setClient(o.getClientName());
+    	oo.setAdditional(o.getAddiName());
+    	oo.setPizza(o.getPizzaType());
+    	oo.setDate(o.getDate());
+    	oo.setId(orderService.getBDId(oo));
+    	oo.setStorageId(orderService.getStorageId(oo));
+    	return oo;
+    }
+    
     //Métodos Getter e Setter
     public void setSize(String size) {
         switch(size){
@@ -21,34 +43,57 @@ public class Orders {
             case "G":
             case "g": this.size = size;
                     break;
-            default: System.out.println("size inválido");
+            default: System.out.println("size inv�lido");
                     break;
         }    
     }
     public void setState(String state) {
-        switch(state){
-            case "Preparando": this.state = state;
-                            break;
-            case "Pronto": this.state = state;
-                            break;
-            case "Saiu para entrega": this.state = state;
-                            break;
-            case "Entregue": this.state = state;
-                            break;
-            case "Cancelado": this.state = state;
-                            break;
-            default: System.out.println("state inválido");
-                            break;
+        if(state!=null) {
+        	this.state = state;
+        }
+        else {
+        	this.state = null;
         }
     }
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(String client) {
+        if(client != null) {
+        	this.client = client;
+        }
+        else {
+        	this.client = null;
+        }
     }
-    public void setPizza(PizzasType pizza) {
-        this.pizza = pizza;
+    public void setPizza(String pizza) {
+        if(pizza != null) {
+        	this.pizza = pizza;
+        }
+        else {
+        	this.pizza = null;
+        }
     }
-    public void setAdditional(Additionals additional) {
-        this.additional = additional;
+    public void setAdditional(String additional) {
+        if(additional != null) {
+        	this.additional = additional;
+        }
+        else {
+        	this.additional = null;
+        }
+    }
+    public void setDate(String date) {
+		if(date!=null) {
+			this.date = date;
+		}
+		else {
+			this.date = null;
+		}
+	}
+    public void setPrice(double p) {
+    	if(p>0) {
+    		this.price = p;
+    	}
+    }
+    public void setStorageId(int sId) {
+    	this.storageId = sId;
     }
 
     public String getSize() {
@@ -57,19 +102,27 @@ public class Orders {
     public String getState() {
         return state;
     }
-    public PizzasType getPizza() {
+    public String getPizza() {
         return pizza;
     }
-    public Additionals getAdditional() {
+    public String getAdditional() {
         return additional;
     }
-    public Client getClient() {
+    public String getClient() {
         return client;
     }
     public int getId() {
     	return id;
     }
-    
+    public String getDate() {
+		return date;
+	}
+    public double getPrice() {
+    	return price;
+    }
+    public int getStorageId() {
+    	return storageId;
+    }
     public void setId(int id) {
     	this.id = id;
     }

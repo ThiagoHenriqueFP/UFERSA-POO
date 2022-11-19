@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import javax.swing.JOptionPane;
-
 import br.edu.ufersa.pizzaria.api.dto.OrderDTO;
+import br.edu.ufersa.pizzaria.model.service.OrdersService;
 import br.edu.ufersa.pizzaria.view.Screen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +20,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
@@ -28,29 +30,32 @@ public class HomeController implements Initializable{
 	@FXML private ChoiceBox<String> pizza;
 	private String[] options = {"Cadastrar", "Listar"};
 	
+	@FXML private TextField searchBar;
 	@FXML private TableView<OrderDTO> orderTable;
 	@FXML private TableColumn<OrderDTO,String> clientName;
 	@FXML private TableColumn<OrderDTO,String> size;
 	@FXML private TableColumn<OrderDTO,String> pizzaType;
 	@FXML private TableColumn<OrderDTO,String> additionalName;
 	@FXML private TableColumn<OrderDTO,String> state;
+	@FXML private TableColumn<OrderDTO,Double> price;
 	@FXML private TableColumn<OrderDTO,Void> edit = new TableColumn<OrderDTO, Void>("Editar");
 	
 	protected static OrderDTO orderRow;
-	
-	private List<OrderDTO> orderList = new ArrayList<OrderDTO>();
-	
 	private ObservableList<OrderDTO> observableOrderList;
+	private OrdersService orderService = new OrdersService();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		dropDownMenu();
 		initializeTableView();
-		addBtnToColumn();
 	}
 	
 	@FXML public void orderSignUp() {
 		Screen.telaDeCadastroPedido();
+	}
+	
+	public void report() {
+		Screen.telaDeReport();
 	}
 	
 	public void getSelectedOptionClient(ActionEvent event) {
@@ -91,6 +96,53 @@ public class HomeController implements Initializable{
 		pizza.setOnAction(this::getSelectedOptionPizza);
 	}
 	
+	public void initializeTableView() {
+		List<OrderDTO> orderList = new ArrayList<OrderDTO>();
+		orderList = orderService.getAllOrders();
+		observableOrderList = FXCollections.observableArrayList(orderList);
+		
+		clientName.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("ClientName"));
+		size.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("Size"));
+		pizzaType.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("PizzaType"));
+		additionalName.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("AddiName"));
+		state.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("State"));
+		price.setCellValueFactory(new PropertyValueFactory<OrderDTO,Double>("Price"));
+		
+		orderTable.setItems(search(observableOrderList));
+		addBtnToColumn();
+	}
+	
+	public SortedList<OrderDTO> search(ObservableList<OrderDTO> obsList) {
+		FilteredList<OrderDTO> filteredData = new FilteredList<>(obsList, b -> true);
+		searchBar.textProperty().addListener((observable,oldValue,newValue)->{
+			filteredData.setPredicate(order -> {
+				if(newValue == null || newValue.isEmpty()) {
+					return true;
+				}
+				
+				String lowerCaseFilter = newValue.toLowerCase();
+				
+				if(order.getClientName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				}
+				else if(order.getPizzaType().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				}
+				else if(order.getState().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+					return true;
+				}
+				else {
+					return false;
+				}
+				
+			});
+		});
+		
+		SortedList<OrderDTO> sortedData = new SortedList<>(filteredData);
+		sortedData.comparatorProperty().bind(orderTable.comparatorProperty());
+		return sortedData;
+	}
+	
 	public void addBtnToColumn() {
 		Callback<TableColumn<OrderDTO, Void>, TableCell<OrderDTO, Void>> cellFactory = new Callback<TableColumn<OrderDTO, Void>, TableCell<OrderDTO, Void>>(){
 
@@ -126,24 +178,4 @@ public class HomeController implements Initializable{
 		edit.setCellFactory(cellFactory);
 		orderTable.getColumns().add(edit);
 	}
-
-	
-	public void initializeTableView() {
-		clientName.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("clientName"));
-		size.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("size"));
-		pizzaType.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("pizzaType"));
-		additionalName.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("AddiName"));
-		state.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("state"));
-		//edit.setCellValueFactory(new PropertyValueFactory<OrderDTO,String>("edit"));
-		
-		OrderDTO o1 = new OrderDTO("Vinicius Dantas de Sousa","Calabresa","Nenhum","M","Preparando","Edit");
-		OrderDTO o2 = new OrderDTO("Whesley Xavier","Frango Catupiry","Milho","P","Saiu para entrega","Edit");
-		
-		orderList.add(o1);
-		orderList.add(o2);
-		
-		observableOrderList = FXCollections.observableArrayList(orderList);
-		
-		orderTable.setItems(observableOrderList);
-	}	
 }

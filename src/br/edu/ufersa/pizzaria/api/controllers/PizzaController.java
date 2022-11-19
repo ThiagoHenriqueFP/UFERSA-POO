@@ -3,26 +3,25 @@ package br.edu.ufersa.pizzaria.api.controllers;
 import javax.swing.JOptionPane;
 
 import br.edu.ufersa.pizzaria.api.dto.PizzaTypeDTO;
-import br.edu.ufersa.pizzaria.model.service.PizzasTypeService;
+import br.edu.ufersa.pizzaria.model.service.PizzaTypeService;
 import br.edu.ufersa.pizzaria.view.Screen;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 public class PizzaController {
 	@FXML private TextField type;
-	@FXML private TextField size;
 	@FXML private TextField value;
 	
-	private PizzasTypeService pizzaService = new PizzasTypeService();
+	private PizzaTypeService pizzaService = new PizzaTypeService();
 	
 	public void pizzaSignUp() {
 		PizzaTypeDTO pizzaDTO = new PizzaTypeDTO();
-		//pizzaDTO.setType(type.getText());
-		//pizzaDTO.setSize(size.getText());
-		//pizzaDTO.setValue(Double.parseDouble(value.getText()));
-		//pizzaService.addPizza(pizzaDTO);
-		JOptionPane.showMessageDialog(null, "Pizza Cadastrada com Sucesso!");
-		Screen.telaDeHome();
+		pizzaDTO.setType(type.getText().toLowerCase());
+		pizzaDTO.setValue(Double.parseDouble(value.getText()));
+		if(pizzaService.addPizza(pizzaDTO)) {
+			JOptionPane.showMessageDialog(null, "Pizza Cadastrada com Sucesso!");
+			Screen.telaDeHome();
+		}
 	}
 	
 	public void voltar() {

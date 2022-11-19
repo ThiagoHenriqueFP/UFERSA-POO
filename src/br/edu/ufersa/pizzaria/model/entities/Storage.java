@@ -1,17 +1,23 @@
 package br.edu.ufersa.pizzaria.model.entities;
 
 import br.edu.ufersa.pizzaria.api.dto.StorageDTO;
+import br.edu.ufersa.pizzaria.model.service.StorageService;
 
 public class Storage {
     // Atributos
-    private String item; // CHAVE
+    private String item;
     private int quantity;
-    private int id;
-
+    private double value;
+    private int id; //KEY
+    
+    private static StorageService storageService = new StorageService();
+    
     public static Storage convertDTO(StorageDTO s) {
         Storage st = new Storage();
         st.setItem(s.getItem());
         st.setQuantity(s.getQuantity());
+        st.setValue(s.getValue());
+        st.setId(storageService.getBDId(st));
         return st;
     }
 
@@ -31,6 +37,12 @@ public class Storage {
             this.quantity = 0;
         }
     }
+    
+    public void setValue(double v) {
+    	if(v>0) {
+    		this.value = v;
+    	}
+    }
 
     public String getItem() {
         return item;
@@ -43,8 +55,12 @@ public class Storage {
     public int getId() {
         return id;
     }
+    
+    public double getValue() {
+		return value;
+	}
 
-    public void SetId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 

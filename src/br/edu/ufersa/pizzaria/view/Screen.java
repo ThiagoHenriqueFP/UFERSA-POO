@@ -46,6 +46,19 @@ public class Screen extends Application{
 		}
 	}
 	
+	public static void telaDeReport() {
+		try {
+			FXMLLoader loader = new FXMLLoader(Screen.class.getResource("/relatorio.fxml"));
+			Pane homeScreen = loader.load();
+			Scene scene = new Scene(homeScreen);
+			stage.setScene(scene);
+			stage.show();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void telaDeCadastroCliente() {
 		try {
 			FXMLLoader loader = new FXMLLoader(Screen.class.getResource("/clientSignUp.fxml"));

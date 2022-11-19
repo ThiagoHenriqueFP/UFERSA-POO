@@ -27,10 +27,10 @@ public class ClientDAO extends BaseDAO<Client>{
 	
 	@Override
 	public boolean delete(Client client) {
-		String sql = "DELETE FROM client WHERE cpf=?;";
+		String sql = "DELETE FROM client WHERE id=?;";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
-			pst.setString(1, client.getCPF());
+			pst.setInt(1, client.getId());
 			pst.execute();
 			return true;
 		}
@@ -42,12 +42,13 @@ public class ClientDAO extends BaseDAO<Client>{
 	
 	@Override
 	public boolean edit(Client client) {
-		String sql = "UPDATE client SET name=?,address=? WHERE cpf=? ";
+		String sql = "UPDATE client SET name=?,address=?,cpf=? WHERE id=? ";
 		try {
 			PreparedStatement pst = getConnection().prepareStatement(sql);
 			pst.setString(1, client.getName());
 			pst.setString(2, client.getAddress());
 			pst.setString(3, client.getCPF());
+			pst.setInt(4, client.getId());
 			pst.executeUpdate();
 			return true;
 		}
@@ -84,9 +85,11 @@ public class ClientDAO extends BaseDAO<Client>{
 			case "address":
 				pst.setString(1, c.getAddress());
 				break;
-			
-			default: 
+			case "cpf":
 				pst.setString(1, c.getCPF());
+				break;
+			default: 
+				pst.setInt(1, c.getId());
 				break;
 			}
 			

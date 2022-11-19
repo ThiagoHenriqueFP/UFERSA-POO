@@ -1,18 +1,22 @@
 package br.edu.ufersa.pizzaria.model.entities;
 
 import br.edu.ufersa.pizzaria.api.dto.ClientDTO;
+import br.edu.ufersa.pizzaria.model.service.ClientService;
 
 public class Client{
 	private String name;
-	private String cpf; //CHAVE
+	private String cpf;
 	private String address;
-	private int id;
+	private int id; //KEY
+	
+	private static ClientService cService = new ClientService();
 	
 	public static Client convertDTO(ClientDTO c) {
 		Client cl = new Client();
 		cl.setName(c.getName());
 		cl.setCPF(c.getCPF());
 		cl.setAddress(c.getAddress());
+		cl.setId(cService.getBDId(cl));
 		return cl;
 	}
 	
@@ -57,13 +61,5 @@ public class Client{
     
     public void setId(int id) {
 		this.id = id;
-	}
-	
-	public static Client convert(ClientDTO c) {
-		Client client = new Client();
-		client.setName(c.getName());
-		client.setCPF(c.getCPF());
-		client.setAddress(c.getAddress());
-		return client;
 	}
 }
