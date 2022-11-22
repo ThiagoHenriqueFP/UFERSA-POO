@@ -7,12 +7,12 @@ import java.util.List;
 
 import br.edu.ufersa.pizzaria.api.dto.PizzaTypeDTO;
 import br.edu.ufersa.pizzaria.model.dao.BaseInterDAO;
-import br.edu.ufersa.pizzaria.model.dao.PizzasTypeDAO;
+import br.edu.ufersa.pizzaria.model.dao.PizzaTypeDAO;
 import br.edu.ufersa.pizzaria.model.entities.PizzaType;
 import br.edu.ufersa.pizzaria.model.entities.Storage;
 
 public class PizzaTypeService {
-	BaseInterDAO<PizzaType> dao = new PizzasTypeDAO();
+	BaseInterDAO<PizzaType> dao = new PizzaTypeDAO();
 	
 	public boolean addPizza(PizzaTypeDTO p) {
 		PizzaType pp = PizzaType.convertDTO(p);

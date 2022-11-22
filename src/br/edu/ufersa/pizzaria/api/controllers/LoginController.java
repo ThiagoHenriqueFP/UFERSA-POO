@@ -1,6 +1,7 @@
 package br.edu.ufersa.pizzaria.api.controllers;
 
 import br.edu.ufersa.pizzaria.model.entities.Login;
+import br.edu.ufersa.pizzaria.model.entities.LoginExecption;
 import br.edu.ufersa.pizzaria.view.Screen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,11 +14,12 @@ public class LoginController {
 	@FXML private TextField senha;
 	private Login logue;
 	
-	@FXML protected void autenticar(ActionEvent event) {
+	@FXML protected void autenticar(ActionEvent event) throws LoginExecption{
 		logue = new Login();
 		boolean allSet = logue.autenticar(login.getText(), senha.getText());
 		if(allSet) {
 			Screen.telaDeHome();
-		}
+		} else 
+			throw new LoginExecption("robocop gay");
 	}
 }

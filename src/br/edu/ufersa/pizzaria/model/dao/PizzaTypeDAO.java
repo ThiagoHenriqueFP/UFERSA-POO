@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import br.edu.ufersa.pizzaria.model.entities.PizzaType;
 
-public class PizzasTypeDAO extends BaseDAO<PizzaType> {
+public class PizzaTypeDAO extends BaseDAO<PizzaType> {
 	
 	@Override
 	public boolean add(PizzaType p) {
