@@ -4,9 +4,9 @@
 
 Definir os argumentos para o projeto (path do javafx)
 
-Rodar o script do banco de dados, já com alguns dados previamente populados
+Rodar o script do banco de dados
 
-Definir a pasta ‘src’ como source folder
+Definir a pasta ‘res’ como source folder seguindo estes passos: clique direito na pasta 'res' -> build path -> use as source folder
 
 ---
 
