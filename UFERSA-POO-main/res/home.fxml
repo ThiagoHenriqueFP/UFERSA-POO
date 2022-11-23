@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="768.0" maxWidth="1366.0" minHeight="768.0" minWidth="1366.0" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.ufersa.pizzaria.api.controllers.HomeController">
+   <children>
+      <ImageView fitHeight="785.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/background.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="434.0" fitWidth="92.0" layoutX="14.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/Rectangle%2039.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="102.0" fitWidth="75.0" layoutX="22.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/CLIENTE.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="75.0" fitWidth="75.0" layoutX="22.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/ESTOQUE.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="69.0" fitWidth="75.0" layoutX="25.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PEDIDO.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="69.0" fitWidth="69.0" layoutX="25.0" layoutY="478.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/PIZZA.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="87.0" fitWidth="281.0" layoutX="543.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/Rectangle%2030.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="572.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lista de Pedidos">
+         <font>
+            <Font name="Times New Roman Bold" size="32.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="client" layoutX="31.0" layoutY="185.0" opacity="0.0" prefHeight="54.0" prefWidth="57.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ChoiceBox>
+      <ChoiceBox fx:id="storage" layoutX="31.0" layoutY="377.0" opacity="0.0" prefHeight="60.0" prefWidth="57.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ChoiceBox>
+      <ChoiceBox fx:id="pizza" layoutX="31.0" layoutY="483.0" opacity="0.0" prefHeight="60.0" prefWidth="57.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></ChoiceBox>
+      <Button layoutX="31.0" layoutY="281.0" mnemonicParsing="false" onAction="#orderSignUp" opacity="0.0" prefHeight="60.0" prefWidth="57.0" text="Button">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <TableView fx:id="orderTable" layoutX="301.0" layoutY="127.0" prefHeight="560.0" prefWidth="766.0">
+        <columns>
+          <TableColumn fx:id="clientName" minWidth="150.0" prefWidth="75.0" text="Cliente" />
+          <TableColumn fx:id="size" prefWidth="75.0" text="Tamanho" />
+            <TableColumn fx:id="pizzaType" minWidth="150.0" prefWidth="75.0" text="Sabor" />
+            <TableColumn fx:id="additionalName" minWidth="100.0" prefWidth="75.0" text="Adicional" />
+            <TableColumn fx:id="state" minWidth="150.0" prefWidth="75.0" text="Estado" />
+            <TableColumn fx:id="price" prefWidth="75.0" text="Valor" />
+        </columns>
+      </TableView>
+      <TextField fx:id="searchBar" layoutX="394.0" layoutY="92.0" prefHeight="25.0" prefWidth="674.0" promptText="Nome do Cliente, Estado ou Sabor" />
+      <Text fill="WHITE" layoutX="313.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pesquisar">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cf2525" height="66.0" layoutX="1112.0" layoutY="687.0" stroke="TRANSPARENT" strokeType="INSIDE" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="228.0" />
+      <Text fill="WHITE" layoutX="1178.0" layoutY="727.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatório">
+         <font>
+            <Font name="Times New Roman Bold" size="24.0" />
+         </font>
+      </Text>
+      <Button layoutX="1111.0" layoutY="688.0" mnemonicParsing="false" onAction="#report" opacity="0.0" prefHeight="66.0" prefWidth="228.0" text="Button">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Text layoutX="32.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clientes">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="33.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pedidos">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="33.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estoque">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="39.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pizzas">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
