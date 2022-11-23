@@ -15,6 +15,7 @@ public class ClientController{
 	
 	private ClientService clientService = new ClientService();
 	
+	//Cadastro
 	public void signUp() {
 		ClientDTO clientDto = new ClientDTO();
 		clientDto.setName(name.getText());

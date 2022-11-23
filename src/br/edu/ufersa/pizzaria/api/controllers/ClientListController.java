@@ -35,6 +35,7 @@ public class ClientListController implements Initializable{
 	protected static ClientDTO clientRow;
 	private ClientService clientService = new ClientService();
 	
+	//Listar todos os Clientes salvos na tabela
 	public void listAllClients() {
 		clientList = clientService.getAllClients();
 		obsList = FXCollections.observableArrayList(clientList);
@@ -47,6 +48,7 @@ public class ClientListController implements Initializable{
 		addBtnToColumn();
 	}
 	
+	//Adicionar o botão de editar para cada linha de Cliente
 	public void addBtnToColumn() {
 		Callback<TableColumn<ClientDTO, Void>, TableCell<ClientDTO, Void>> cellFactory = new Callback<TableColumn<ClientDTO, Void>, TableCell<ClientDTO, Void>>(){
 
@@ -83,6 +85,7 @@ public class ClientListController implements Initializable{
 		tableClient.getColumns().add(editList);
 	}
 	
+	//Implementação da Barra de Pesquisa
 	public SortedList<ClientDTO> search(ObservableList<ClientDTO> obsList) {
 		FilteredList<ClientDTO> filteredData = new FilteredList<>(obsList, b -> true);
 		searchBar.textProperty().addListener((observable,oldValue,newValue)->{

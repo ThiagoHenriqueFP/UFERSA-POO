@@ -68,6 +68,7 @@ public class OrderController implements Initializable{
 		}
 	}
 	
+	//Inserindo a lista de Clientes, Pizzas, Adicionais e Tamanhos nas opções selecionáveis
 	public void dropDown() {
 		List<ClientDTO> clientDto = new ArrayList<ClientDTO>();
 		clientDto = clientService.getAllClients();
@@ -93,6 +94,7 @@ public class OrderController implements Initializable{
 		size.setOnAction(this::changePricePerSize);
 	}
 	
+	//Alterar o preço do pedido pelo tamanho
 	public void changePricePerSize(ActionEvent event) {
 		double val = 0;
 		switch(size.getValue()) {
@@ -111,6 +113,7 @@ public class OrderController implements Initializable{
 		}
 	}
 	
+	//Pegar o preço padrão do sabor no banco de dados
 	public String verifyPrice() {
 		List<PizzaTypeDTO> pizzaDto = new ArrayList<PizzaTypeDTO>();
 		pizzaDto = pizzaService.getAllPizza();
@@ -123,6 +126,7 @@ public class OrderController implements Initializable{
 		return result;
 	}
 	
+	//Somar o preço padrão do adicional no banco de dados
 	public Double sumAdditional() {
 		List<StorageDTO> storageDto = new ArrayList<StorageDTO>();
 		storageDto = storageService.getAllItens();
@@ -136,6 +140,7 @@ public class OrderController implements Initializable{
 		return val;
 	}
 	
+	//Diminuir a quantidade do adicional no estoque
 	public int subAdditional() {
 		List<StorageDTO> storageDto = new ArrayList<StorageDTO>();
 		storageDto = storageService.getAllItens();
@@ -149,6 +154,7 @@ public class OrderController implements Initializable{
 		return val-1;
 	}
 	
+	//Diminuir a quantidade do sabor da pizza do estoque
 	public int subPizza() {
 		List<StorageDTO> storageDto = new ArrayList<StorageDTO>();
 		storageDto = storageService.getAllItens();
@@ -162,6 +168,7 @@ public class OrderController implements Initializable{
 		return val-1;
 	}
 	
+	//Pegar o valor padrão do sabor no Banco de Dados
 	public double getPizzaStorageValue() {
 		List<StorageDTO> storageDto = new ArrayList<StorageDTO>();
 		storageDto = storageService.getAllItens();

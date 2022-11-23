@@ -1,6 +1,9 @@
 package br.edu.ufersa.pizzaria.api.dto;
 
 public class ReportDTO {
+	
+	//CLASSE FEITA PARA CRIAR O RELÁTORIO
+	
 	private String clientName;
 	private String pizzaType;
 	private String additionalName;

@@ -1,12 +1,20 @@
 package br.edu.ufersa.pizzaria.api.controllers;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import br.edu.ufersa.pizzaria.api.dto.OrderDTO;
+import br.edu.ufersa.pizzaria.api.dto.ReportDTO;
+import br.edu.ufersa.pizzaria.api.dto.StorageDTO;
 import br.edu.ufersa.pizzaria.model.service.OrdersService;
+import br.edu.ufersa.pizzaria.model.service.StorageService;
 import br.edu.ufersa.pizzaria.view.Screen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,10 +62,7 @@ public class HomeController implements Initializable{
 		Screen.telaDeCadastroPedido();
 	}
 	
-	public void report() {
-		Screen.telaDeReport();
-	}
-	
+	//Determinar qual tela foi selecionada para a opção de Cliente
 	public void getSelectedOptionClient(ActionEvent event) {
 		if(client.getValue().equals("Cadastrar")) {
 			Screen.telaDeCadastroCliente();
@@ -67,6 +72,7 @@ public class HomeController implements Initializable{
 		}
 	}
 	
+	//Determinar qual tela foi selecionada para a opção de Estoque
 	public void getSelectedOptionStorage(ActionEvent event) {
 		if(storage.getValue().equals("Cadastrar")) {
 			Screen.telaDeCadastroEstoque();
@@ -76,6 +82,7 @@ public class HomeController implements Initializable{
 		}
 	}
 	
+	//Determinar qual tela foi selecionada para a opção de Pizza
 	public void getSelectedOptionPizza(ActionEvent event) {
 		if(pizza.getValue().equals("Cadastrar")) {
 			Screen.telaDeCadastroPizza();
@@ -85,6 +92,7 @@ public class HomeController implements Initializable{
 		}
 	}
 	
+	//Inserir opções para os ícones Cliente,Estoque e Pizza
 	public void dropDownMenu() {
 		client.getItems().addAll(options);
 		client.setOnAction(this::getSelectedOptionClient);
@@ -96,6 +104,7 @@ public class HomeController implements Initializable{
 		pizza.setOnAction(this::getSelectedOptionPizza);
 	}
 	
+	//Inserindo os pedidos na tabela
 	public void initializeTableView() {
 		List<OrderDTO> orderList = new ArrayList<OrderDTO>();
 		orderList = orderService.getAllOrders();
@@ -112,6 +121,7 @@ public class HomeController implements Initializable{
 		addBtnToColumn();
 	}
 	
+	//Implementação da Barra de Pesquisa
 	public SortedList<OrderDTO> search(ObservableList<OrderDTO> obsList) {
 		FilteredList<OrderDTO> filteredData = new FilteredList<>(obsList, b -> true);
 		searchBar.textProperty().addListener((observable,oldValue,newValue)->{
@@ -143,6 +153,7 @@ public class HomeController implements Initializable{
 		return sortedData;
 	}
 	
+	//Adicionar botão de Editar para cada linha de Pedido
 	public void addBtnToColumn() {
 		Callback<TableColumn<OrderDTO, Void>, TableCell<OrderDTO, Void>> cellFactory = new Callback<TableColumn<OrderDTO, Void>, TableCell<OrderDTO, Void>>(){
 
@@ -178,4 +189,70 @@ public class HomeController implements Initializable{
 		edit.setCellFactory(cellFactory);
 		orderTable.getColumns().add(edit);
 	}
+	
+	//Criação do arquivo de Relatório
+	public void report() {
+		
+		List<ReportDTO> reportList = new ArrayList<ReportDTO>();
+		OrdersService orderService = new OrdersService();
+		List<OrderDTO> orderList = orderService.getAllOrders();
+		StorageService storageService = new StorageService();
+		List<StorageDTO> storageList = storageService.getAllItens();
+		
+		for(int i=0;i<orderList.size();i++) {
+			
+			ReportDTO reportDto = new ReportDTO();
+			
+			reportDto.setClientName(orderList.get(i));
+			reportDto.setPizzaType(orderList.get(i));
+			reportDto.setSize(orderList.get(i));
+			reportDto.setAddiName(orderList.get(i));
+			reportDto.setState(orderList.get(i));
+			reportDto.setPrice(orderList.get(i));
+			reportDto.setDate(orderList.get(i));
+			
+			for(int o=0;o<storageList.size();o++) {
+				if(orderList.get(i).getPizzaType().equals(storageList.get(o).getItem())) {
+					reportDto.setPiQuantity(storageList.get(o));
+				}
+				if(orderList.get(i).getAddiName().equals(storageList.get(o).getItem())) {
+					reportDto.setAddiQuantity(storageList.get(o));
+				}
+			}
+			
+			reportList.add(reportDto);
+			
+		}
+		
+		try {
+			File reportFile = new File("Relatorio.txt");
+			if(reportFile.createNewFile()) {
+				
+				FileWriter writer = new FileWriter("Relatorio.txt");
+				
+				writer.write("Cliente                     Tamanho  Sabor       Adicional     Estado             Valor   Estoque-Pizza  Estoque-Adicional   Data\r\n");
+				
+				for(int i=0;i<reportList.size();i++) {
+					writer.write(reportList.get(i).getClientName()+"             "+reportList.get(i).getSize()+"        "+reportList.get(i).getPizzaType()+
+							"   "+reportList.get(i).getAddiName()+"        "+reportList.get(i).getState()+"           "+reportList.get(i).getPrice()+
+							"   "+reportList.get(i).getPiQuantity()+"            "+reportList.get(i).getAddiQuantity()+"                   "+
+							reportList.get(i).getDate()+"\r\n");
+				}
+				
+				writer.close();
+				
+				JOptionPane.showMessageDialog(null, "Relatório Criado com Sucesso!");
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Relatório já Existente!");
+			}
+		}
+		catch(IOException e) {
+			JOptionPane.showMessageDialog(null, "Falha ao Criar Relatório!");
+			e.printStackTrace();
+		}
+		
+		//Screen.telaDeReport();
+	}
+	
 }

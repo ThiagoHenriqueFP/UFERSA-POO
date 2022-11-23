@@ -7,6 +7,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Screen extends Application{
+	
+	//INSTANCIANDO TODAS AS TELAS DO PROJETO
+	
 	public static Stage stage;
 
 	@Override

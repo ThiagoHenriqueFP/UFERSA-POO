@@ -87,6 +87,7 @@ public class PizzaTypeService {
 		}
 	}
 	
+	//Método para pegar o ID gerado no banco de dados
 	public int getBDId(PizzaType pizza) {
 		ResultSet rs = dao.findBySpecifiedField(pizza, "name");
 		try {
@@ -103,6 +104,7 @@ public class PizzaTypeService {
 		}
 	}
 	
+	//Método para pegar o ID estrangeiro gerado no banco de dados
 	public int getStorageId(PizzaType pizza) {
 		List<Storage> storageList = new ArrayList<Storage>();
 		StorageService storageService = new StorageService();

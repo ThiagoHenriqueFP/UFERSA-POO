@@ -87,6 +87,7 @@ public class ClientService {
 		}
 	}
 	
+	//Método para pegar o ID gerado no banco de dados
 	public int getBDId(Client client) {
 		ResultSet rs = dao.findBySpecifiedField(client, "cpf");
 		try {

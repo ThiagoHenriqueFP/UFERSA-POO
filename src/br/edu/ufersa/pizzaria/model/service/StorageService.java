@@ -52,6 +52,7 @@ public class StorageService {
 		}
 	}
 	
+	//Método para pegar todas as informações no Banco de Dados
 	public List<Storage> getAllNoDTO(){
 		List<Storage> itens = new ArrayList<Storage>();
 		ResultSet rs = dao.getAll();
@@ -109,28 +110,12 @@ public class StorageService {
 		}
 	}
 	
+	//Método para pegar o ID gerado no banco de dados
 	public int getBDId(Storage s) {
 		ResultSet rs = dao.findBySpecifiedField(s, "name");
 		try {
 			if(rs!=null && rs.next()) {
 				return rs.getInt("id");
-			}
-			else {
-				return 0;
-			}
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-			return 0;
-		}
-	}
-	
-	public int getBDAmount(StorageDTO s) {
-		Storage st = Storage.convertDTO(s);
-		ResultSet rs = dao.findBySpecifiedField(st, "name");
-		try {
-			if(rs!=null && rs.next()) {
-				return rs.getInt("amount");
 			}
 			else {
 				return 0;

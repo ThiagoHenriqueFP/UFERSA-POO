@@ -98,5 +98,25 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Text layoutX="32.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clientes">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="33.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pedidos">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="33.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Estoque">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="39.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pizzas">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

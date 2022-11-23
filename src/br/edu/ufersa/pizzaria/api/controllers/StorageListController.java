@@ -36,6 +36,7 @@ public class StorageListController implements Initializable{
 	protected static StorageDTO storageRow;
 	private StorageService storageService = new StorageService();
 	
+	//Inserindo as informações do estoque na tabela
 	public void listStorage() {
 		storageList = storageService.getAllItens();
 		obsList = FXCollections.observableArrayList(storageList);
@@ -46,6 +47,7 @@ public class StorageListController implements Initializable{
 		addBtnToColumn();
 	}
 	
+	//Inserindo botão de editar para cada linha de produto do estoque
 	public void addBtnToColumn() {
 		Callback<TableColumn<StorageDTO, Void>, TableCell<StorageDTO, Void>> cellFactory = new Callback<TableColumn<StorageDTO, Void>, TableCell<StorageDTO, Void>>(){
 
@@ -82,6 +84,7 @@ public class StorageListController implements Initializable{
 		tabelaEstoque.getColumns().add(edit);
 	}
 	
+	//Implementação da barra de pesquisa
 	public SortedList<StorageDTO> search(ObservableList<StorageDTO> obsList) {
 		FilteredList<StorageDTO> filteredData = new FilteredList<>(obsList, b -> true);
 		searchBar.textProperty().addListener((observable,oldValue,newValue)->{

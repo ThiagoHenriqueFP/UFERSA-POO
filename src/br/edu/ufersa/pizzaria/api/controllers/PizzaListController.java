@@ -38,7 +38,8 @@ public class PizzaListController implements Initializable {
 	private ObservableList<PizzaTypeDTO> obsList;
 	protected static PizzaTypeDTO pizzaRow;
 	private PizzaTypeService pizzaService = new PizzaTypeService();
-
+	
+	//Inserindo as informações do sabor na tabela
 	public void listPizza() {
 		pizzaList = pizzaService.getAllPizza();
 		obsList = FXCollections.observableArrayList(pizzaList);
@@ -47,7 +48,8 @@ public class PizzaListController implements Initializable {
 		tablePizza.setItems(search(obsList));
 		addBtnToColumn();
 	}
-
+	
+	//Inserindo botão de editar para cada linha de sabor de pizza
 	public void addBtnToColumn() {
 		Callback<TableColumn<PizzaTypeDTO, Void>, TableCell<PizzaTypeDTO, Void>> cellFactory = new Callback<TableColumn<PizzaTypeDTO, Void>, TableCell<PizzaTypeDTO, Void>>() {
 
@@ -83,6 +85,7 @@ public class PizzaListController implements Initializable {
 		tablePizza.getColumns().add(edit);
 	}
 	
+	//Implementação da barra de pesquisa
 	public SortedList<PizzaTypeDTO> search(ObservableList<PizzaTypeDTO> obsList) {
 		FilteredList<PizzaTypeDTO> filteredData = new FilteredList<>(obsList, b -> true);
 		searchBar.textProperty().addListener((observable,oldValue,newValue)->{

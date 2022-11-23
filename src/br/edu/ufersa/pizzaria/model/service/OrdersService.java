@@ -57,6 +57,7 @@ public class OrdersService {
 		}
 	}
 	
+	//Método para pegar todas as informações salvas no Banco de Dados
 	public List<Orders> getAllNoDTO(){
 		List<Orders> orders = new ArrayList<Orders>();
 		ResultSet rs = dao.getAll();
@@ -119,6 +120,7 @@ public class OrdersService {
 		}
 	}
 	
+	//Método para pegar o ID gerado no banco de dados
 	public int getBDId(Orders order) {
 		List<Orders> orderList = new ArrayList<Orders>();
 		orderList = getAllNoDTO();
@@ -136,6 +138,7 @@ public class OrdersService {
 		return order.getId();
 	}
 	
+	//Método para pegar o ID estrangeiro gerado no banco de dados
 	public int getStorageId(Orders order) {
 		List<Storage> storageList = new ArrayList<Storage>();
 		StorageService storageService = new StorageService();
