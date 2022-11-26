@@ -8,6 +8,8 @@ Rodar o script do banco de dados
 
 Definir a pasta ‘res’ como source folder seguindo estes passos: clique direito na pasta 'res' -> build path -> use as source folder
 
+O script para o Banco de Dados está localizado na pasta 'res' -> 'script'
+
 ---
 
 ## Executando
